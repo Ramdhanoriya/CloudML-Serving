@@ -1,11 +1,18 @@
 # Tensorflow-Tutorials
+
 Tensorflow related materials
 
-Tensorflow Workshop - https://github.com/mari-linhares/tensorflow-workshop
+# Recommended Tutorials:
 
-Effective Tensorflow - https://github.com/vahidk/EffectiveTensorflow
+Tensorflow Examples https://github.com/aymericdamien/TensorFlow-Examples
 
-Stanford Tensorflow Tutorials - https://github.com/chiphuyen/stanford-tensorflow-tutorials
+Tensorflow Workshop https://github.com/mari-linhares/tensorflow-workshop
+
+Effective Tensorflow https://github.com/vahidk/EffectiveTensorflow
+
+Stanford Tensorflow Tutorials https://github.com/chiphuyen/stanford-tensorflow-tutorials
+
+# Others:
 
 Tensorflow Excercises - https://github.com/Kyubyong/tensorflow-exercises
 
