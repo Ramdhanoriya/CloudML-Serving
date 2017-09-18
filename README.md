@@ -1,7 +1,5 @@
 # Tensorflow-Tutorials
 
-Tensorflow related materials
-
 # Recommended Tutorials:
 
 Tensorflow Examples https://github.com/aymericdamien/TensorFlow-Examples
