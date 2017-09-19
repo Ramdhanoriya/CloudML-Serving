@@ -1,8 +1,7 @@
 import tensorflow as tf
-
 import tensorflow.contrib.learn as tflearn
-from tensorflow.contrib.learn.python.learn import learn_runner
-from tensorflow.contrib.learn.python.learn.estimators import run_config
+
+import time
 
 print('Tensorflow Version - ', tf.__version__)  # Tensorflow 1.3
 tf.logging.set_verbosity(tf.logging.INFO)
@@ -56,23 +55,18 @@ def iris_serving_input_fn():
     return tf.contrib.learn.InputFnOps(features, None, inputs)
 
 
-def experiment_fn(output_dir):
-    config = run_config.RunConfig(model_dir=output_dir)
-    classifier = tf.contrib.learn.DNNClassifier(hidden_units=[10, 10], feature_columns=feature_columns, n_classes=3,
-                                                config=config)
+classifier = tflearn.DNNClassifier(hidden_units=[10, 10], feature_columns=feature_columns, n_classes=3,
+                                   model_dir='build/')
 
-    from tensorflow.contrib.learn.python.learn.utils import saved_model_export_utils
+classifier.fit(input_fn=lambda: input_fn(train_file, perform_shuffle=True, repeat_count=25))
 
-    return tflearn.Experiment(classifier,
-                              train_input_fn=lambda: input_fn(train_file, perform_shuffle=True, repeat_count=10),
-                              eval_input_fn=lambda: input_fn(test_file, perform_shuffle=False, repeat_count=1),
-                              eval_metrics=None,
-                              export_strategies=[saved_model_export_utils.make_export_strategy(
-                                  serving_input_fn=iris_serving_input_fn, default_output_alternative_key=None,
-                                  exports_to_keep=1
-                              )],
-                              train_steps=10000
-                              )
+evaluation_results = classifier.evaluate(input_fn=lambda: input_fn(test_file, perform_shuffle=False, repeat_count=1))
 
+for key in evaluation_results:
+    print(" {} was {}".format(key, evaluation_results[key]))
 
-learn_runner.run(experiment_fn=experiment_fn, output_dir='build/')
+time.sleep(5)
+print('\n\n Exporting Iris Model')
+
+classifier.export_savedmodel(export_dir_base='build/', serving_input_fn=iris_serving_input_fn,
+                             default_output_alternative_key=None)
