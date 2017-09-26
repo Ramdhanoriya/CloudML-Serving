@@ -1,7 +1,8 @@
+import time
+
 import tensorflow as tf
 import tensorflow.contrib.learn as tflearn
-
-import time
+from tensorflow.contrib.learn.python.learn.metric_spec import MetricSpec
 
 print('Tensorflow Version - ', tf.__version__)  # Tensorflow 1.3
 tf.logging.set_verbosity(tf.logging.INFO)
@@ -55,10 +56,21 @@ def iris_serving_input_fn():
     return tf.contrib.learn.InputFnOps(features, None, inputs)
 
 
-classifier = tflearn.DNNClassifier(hidden_units=[10, 10], feature_columns=feature_columns, n_classes=3,
-                                   model_dir='build/')
+validation_metrics = {
+    "accuracy": MetricSpec(metric_fn=tf.contrib.metrics.streaming_accuracy, prediction_key="classes"),
+    "recall": MetricSpec(metric_fn=tf.contrib.metrics.streaming_recall, prediction_key="classes"),
+    "precision": MetricSpec(metric_fn=tf.contrib.metrics.streaming_precision, prediction_key="classes")
+}
+validation_monitor = tflearn.monitors.ValidationMonitor(input_fn=lambda: input_fn(test_file, perform_shuffle=False,
+                                                                                  repeat_count=1), every_n_steps=50,
+                                                        metrics=validation_metrics, early_stopping_metric="loss",
+                                                        early_stopping_metric_minimize=True, early_stopping_rounds=200)
 
-classifier.fit(input_fn=lambda: input_fn(train_file, perform_shuffle=True, repeat_count=25))
+classifier = tflearn.DNNClassifier(hidden_units=[10, 10], feature_columns=feature_columns, n_classes=3,
+                                   model_dir='build/', config=tflearn.RunConfig(save_checkpoints_secs=1))
+
+classifier.fit(input_fn=lambda: input_fn(train_file, perform_shuffle=True, repeat_count=40),
+               monitors=[validation_monitor])
 
 evaluation_results = classifier.evaluate(input_fn=lambda: input_fn(test_file, perform_shuffle=False, repeat_count=1))
 
