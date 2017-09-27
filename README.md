@@ -4,6 +4,8 @@
 
 Inroduction to Tensorflow with Canned Estimator and Custom Estimator - https://github.com/random-forests/tensorflow-workshop
 
+Another Great Tensorflow Workshop - https://github.com/amygdala/tensorflow-workshop
+
 Tensorflow Examples https://github.com/aymericdamien/TensorFlow-Examples
 
 Tensorflow Workshop https://github.com/mari-linhares/tensorflow-workshop
