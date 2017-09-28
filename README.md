@@ -1,37 +1,19 @@
-# Tensorflow-Tutorials
+# Machine-Learning-Solutions
 
-# Recommended Tutorials:
+The idea is to solve many real-world problems using Machine Learning. We will use various open dataset available
+from kaggle and other sources to solve the needed problem using Tensorflow. This reposiotory will only use tensorflow
+or tensorflow related packages for building machine learning models
 
-Inroduction to Tensorflow with Canned Estimator and Custom Estimator - https://github.com/random-forests/tensorflow-workshop
+# Covers:
 
-Another Great Tensorflow Workshop - https://github.com/amygdala/tensorflow-workshop
+Tensorflow-Estimators
+Tensorboard
+Tensorflow Data Pipeline
+Tensorflow Serving
+Keras
+Many More......
 
-Tensorflow Examples https://github.com/aymericdamien/TensorFlow-Examples
+# Available Solutions
 
-Tensorflow Workshop https://github.com/mari-linhares/tensorflow-workshop
-
-Effective Tensorflow https://github.com/vahidk/EffectiveTensorflow
-
-Stanford Tensorflow Tutorials https://github.com/chiphuyen/stanford-tensorflow-tutorials
-
-# Others:
-
-Tensorflow Excercises - https://github.com/Kyubyong/tensorflow-exercises
-
-Tensorflow ML Algorithms - https://github.com/golbin/TensorFlow-ML-Exercises
-
-Keras Tensorflow Serving - https://github.com/CKsunvictor7/tensorflow_serving_samples
-
-Tensorflow Interview - https://github.com/duzhen1996/TensorFlow-Intel-Interview
-
-# Tensorflow-Important Links
-
-Tensorflow and Keras - https://github.com/corrieelston/keras-on-cmle
-
-Tensorflow Serving and Estimator:
-
-https://github.com/amitkumarj441/GoogleDevsIndia
-
-https://github.com/GoogleCloudPlatform/training-data-analyst/tree/master/blogs/babyweight
-
-https://github.com/GoogleCloudPlatform/ml-on-gcp
+Iris - Use new tensorflow pipeline to build a model
+Mnist - Using Custom Estimator i.e. Keras to build model and serving
