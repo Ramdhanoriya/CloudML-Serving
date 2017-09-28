@@ -15,5 +15,5 @@ or tensorflow related packages for building machine learning models
 
 # Available Solutions
 
-- Iris - Use new tensorflow pipeline to build a model
+- Iris - Use new tensorflow data pipeline(i.e. Dataset) to build a model
 - Mnist - Using Custom Estimator i.e. Keras to build model and serving
