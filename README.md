@@ -6,14 +6,14 @@ or tensorflow related packages for building machine learning models
 
 # Covers:
 
-Tensorflow-Estimators
-Tensorboard
-Tensorflow Data Pipeline
-Tensorflow Serving
-Keras
-Many More......
+- Tensorflow-Estimators
+- Tensorboard
+- Tensorflow Data Pipeline
+- Tensorflow Serving
+- Keras
+- Many More......
 
 # Available Solutions
 
-Iris - Use new tensorflow pipeline to build a model
-Mnist - Using Custom Estimator i.e. Keras to build model and serving
+- Iris - Use new tensorflow pipeline to build a model
+- Mnist - Using Custom Estimator i.e. Keras to build model and serving
