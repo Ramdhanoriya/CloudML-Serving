@@ -1,4 +1,4 @@
-# Machine-Learning-Solutions
+# Tensorflow-Solutions
 
 The idea is to solve many real-world problems using Machine Learning. We will use various open dataset available
 from kaggle and other sources to solve the needed problem using Tensorflow. This reposiotory will only use tensorflow
