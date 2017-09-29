@@ -57,10 +57,13 @@ def iris_serving_input_fn():
 run_config = tf.estimator.RunConfig()
 run_config.replace(save_checkpoints_secs=1)
 
-classifier = tf.estimator.DNNClassifier(hidden_units=[10, 10], feature_columns=feature_columns, n_classes=3,
-                                        model_dir='build/', config=run_config)
+classifier = tf.estimator.DNNClassifier(hidden_units=[100, 70, 20, 12], feature_columns=feature_columns, n_classes=3,
+                                        model_dir='build/', config=run_config, dropout=0.4,
+                                        optimizer=tf.train.ProximalAdagradOptimizer(learning_rate=0.1,
+                                                                                    l1_regularization_strength=0.01),
+                                        activation_fn=tf.nn.elu)
 
-classifier.train(input_fn=lambda: input_fn(train_file, perform_shuffle=True, repeat_count=40))
+classifier.train(input_fn=lambda: input_fn(train_file, perform_shuffle=True, repeat_count=30))
 
 evaluation_results = classifier.evaluate(input_fn=lambda: input_fn(test_file, perform_shuffle=False, repeat_count=1))
 
