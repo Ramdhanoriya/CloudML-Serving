@@ -33,7 +33,7 @@ y_test = tf.keras.utils.to_categorical(y_test, num_classes=11)
 keras_estimator = model_estimator(vocab_size, max_length)
 
 print('Training.....')
-keras_estimator.train(input_fn=input_function(x_train, y_train, shuffle=True, batch_size=32, epochs=1))
+keras_estimator.train(input_fn=input_function(x_train, y_train, shuffle=True, batch_size=32, epochs=10))
 
 print('Evaluating......')
 eval_results = keras_estimator.evaluate(input_fn=input_function(x_test, y_test, shuffle=False, batch_size=32, epochs=1))
