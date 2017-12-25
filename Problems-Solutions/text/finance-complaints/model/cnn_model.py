@@ -10,7 +10,7 @@ def model_estimator(vocab_size, max_length, model_dir=os.getcwd() + '\\' + 'buil
     model.add(tf.keras.layers.GlobalMaxPooling1D())
     model.add(tf.keras.layers.Dense(100, activation='relu'))
     model.add(tf.keras.layers.Dropout(0.4))
-    model.add(tf.keras.layers.Dense(11, activation='softmax'))
+    model.add(tf.keras.layers.Dense(11, activation='softmax', name='output'))
     print(model.summary())
     model.compile(loss='categorical_crossentropy', optimizer='adam',
                   metrics=['accuracy', tf.keras.metrics.categorical_accuracy])

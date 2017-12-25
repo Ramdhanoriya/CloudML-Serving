@@ -3501,13 +3501,13 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Initializer/random_uniform/shape"
+  name: "output/kernel/Initializer/random_uniform/shape"
   op: "Const"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3545,13 +3545,13 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Initializer/random_uniform/min"
+  name: "output/kernel/Initializer/random_uniform/min"
   op: "Const"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3583,13 +3583,13 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Initializer/random_uniform/max"
+  name: "output/kernel/Initializer/random_uniform/max"
   op: "Const"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3621,9 +3621,9 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Initializer/random_uniform/RandomUniform"
+  name: "output/kernel/Initializer/random_uniform/RandomUniform"
   op: "RandomUniform"
-  input: "dense_2/kernel/Initializer/random_uniform/shape"
+  input: "output/kernel/Initializer/random_uniform/shape"
   attr {
     key: "T"
     value {
@@ -3634,7 +3634,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3673,10 +3673,10 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Initializer/random_uniform/sub"
+  name: "output/kernel/Initializer/random_uniform/sub"
   op: "Sub"
-  input: "dense_2/kernel/Initializer/random_uniform/max"
-  input: "dense_2/kernel/Initializer/random_uniform/min"
+  input: "output/kernel/Initializer/random_uniform/max"
+  input: "output/kernel/Initializer/random_uniform/min"
   attr {
     key: "T"
     value {
@@ -3687,7 +3687,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3702,10 +3702,10 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Initializer/random_uniform/mul"
+  name: "output/kernel/Initializer/random_uniform/mul"
   op: "Mul"
-  input: "dense_2/kernel/Initializer/random_uniform/RandomUniform"
-  input: "dense_2/kernel/Initializer/random_uniform/sub"
+  input: "output/kernel/Initializer/random_uniform/RandomUniform"
+  input: "output/kernel/Initializer/random_uniform/sub"
   attr {
     key: "T"
     value {
@@ -3716,7 +3716,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3737,10 +3737,10 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Initializer/random_uniform"
+  name: "output/kernel/Initializer/random_uniform"
   op: "Add"
-  input: "dense_2/kernel/Initializer/random_uniform/mul"
-  input: "dense_2/kernel/Initializer/random_uniform/min"
+  input: "output/kernel/Initializer/random_uniform/mul"
+  input: "output/kernel/Initializer/random_uniform/min"
   attr {
     key: "T"
     value {
@@ -3751,7 +3751,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3772,13 +3772,13 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel"
+  name: "output/kernel"
   op: "VariableV2"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3830,10 +3830,10 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/Assign"
+  name: "output/kernel/Assign"
   op: "Assign"
-  input: "dense_2/kernel"
-  input: "dense_2/kernel/Initializer/random_uniform"
+  input: "output/kernel"
+  input: "output/kernel/Initializer/random_uniform"
   attr {
     key: "T"
     value {
@@ -3844,7 +3844,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3877,9 +3877,9 @@ node {
   }
 }
 node {
-  name: "dense_2/kernel/read"
+  name: "output/kernel/read"
   op: "Identity"
-  input: "dense_2/kernel"
+  input: "output/kernel"
   attr {
     key: "T"
     value {
@@ -3890,7 +3890,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -3911,13 +3911,13 @@ node {
   }
 }
 node {
-  name: "dense_2/bias/Initializer/zeros"
+  name: "output/bias/Initializer/zeros"
   op: "Const"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -3955,13 +3955,13 @@ node {
   }
 }
 node {
-  name: "dense_2/bias"
+  name: "output/bias"
   op: "VariableV2"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -4007,10 +4007,10 @@ node {
   }
 }
 node {
-  name: "dense_2/bias/Assign"
+  name: "output/bias/Assign"
   op: "Assign"
-  input: "dense_2/bias"
-  input: "dense_2/bias/Initializer/zeros"
+  input: "output/bias"
+  input: "output/bias/Initializer/zeros"
   attr {
     key: "T"
     value {
@@ -4021,7 +4021,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -4051,9 +4051,9 @@ node {
   }
 }
 node {
-  name: "dense_2/bias/read"
+  name: "output/bias/read"
   op: "Identity"
-  input: "dense_2/bias"
+  input: "output/bias"
   attr {
     key: "T"
     value {
@@ -4064,7 +4064,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -4082,10 +4082,10 @@ node {
   }
 }
 node {
-  name: "dense_2/MatMul"
+  name: "output/MatMul"
   op: "MatMul"
   input: "dropout_1/dropout/mul"
-  input: "dense_2/kernel/read"
+  input: "output/kernel/read"
   attr {
     key: "T"
     value {
@@ -4121,10 +4121,10 @@ node {
   }
 }
 node {
-  name: "dense_2/BiasAdd"
+  name: "output/BiasAdd"
   op: "BiasAdd"
-  input: "dense_2/MatMul"
-  input: "dense_2/bias/read"
+  input: "output/MatMul"
+  input: "output/bias/read"
   attr {
     key: "T"
     value {
@@ -4154,9 +4154,9 @@ node {
   }
 }
 node {
-  name: "dense_2/Softmax"
+  name: "output/Softmax"
   op: "Softmax"
-  input: "dense_2/BiasAdd"
+  input: "output/BiasAdd"
   attr {
     key: "T"
     value {
@@ -4865,7 +4865,7 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Sum/reduction_indices"
+  name: "loss/output_loss/Sum/reduction_indices"
   op: "Const"
   input: "^add"
   attr {
@@ -4896,10 +4896,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Sum"
+  name: "loss/output_loss/Sum"
   op: "Sum"
-  input: "dense_2/Softmax"
-  input: "loss/dense_2_loss/Sum/reduction_indices"
+  input: "output/Softmax"
+  input: "loss/output_loss/Sum/reduction_indices"
   attr {
     key: "T"
     value {
@@ -4935,10 +4935,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/truediv"
+  name: "loss/output_loss/truediv"
   op: "RealDiv"
-  input: "dense_2/Softmax"
-  input: "loss/dense_2_loss/Sum"
+  input: "output/Softmax"
+  input: "loss/output_loss/Sum"
   attr {
     key: "T"
     value {
@@ -4962,7 +4962,7 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Const"
+  name: "loss/output_loss/Const"
   op: "Const"
   input: "^add"
   attr {
@@ -4993,7 +4993,7 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/sub/x"
+  name: "loss/output_loss/sub/x"
   op: "Const"
   input: "^add"
   attr {
@@ -5024,10 +5024,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/sub"
+  name: "loss/output_loss/sub"
   op: "Sub"
-  input: "loss/dense_2_loss/sub/x"
-  input: "loss/dense_2_loss/Const"
+  input: "loss/output_loss/sub/x"
+  input: "loss/output_loss/Const"
   attr {
     key: "T"
     value {
@@ -5045,10 +5045,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/clip_by_value/Minimum"
+  name: "loss/output_loss/clip_by_value/Minimum"
   op: "Minimum"
-  input: "loss/dense_2_loss/truediv"
-  input: "loss/dense_2_loss/sub"
+  input: "loss/output_loss/truediv"
+  input: "loss/output_loss/sub"
   attr {
     key: "T"
     value {
@@ -5072,10 +5072,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/clip_by_value"
+  name: "loss/output_loss/clip_by_value"
   op: "Maximum"
-  input: "loss/dense_2_loss/clip_by_value/Minimum"
-  input: "loss/dense_2_loss/Const"
+  input: "loss/output_loss/clip_by_value/Minimum"
+  input: "loss/output_loss/Const"
   attr {
     key: "T"
     value {
@@ -5099,9 +5099,9 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Log"
+  name: "loss/output_loss/Log"
   op: "Log"
-  input: "loss/dense_2_loss/clip_by_value"
+  input: "loss/output_loss/clip_by_value"
   attr {
     key: "T"
     value {
@@ -5125,10 +5125,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/mul"
+  name: "loss/output_loss/mul"
   op: "Mul"
   input: "random_shuffle_queue_DequeueUpTo:2"
-  input: "loss/dense_2_loss/Log"
+  input: "loss/output_loss/Log"
   attr {
     key: "T"
     value {
@@ -5152,7 +5152,7 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Sum_1/reduction_indices"
+  name: "loss/output_loss/Sum_1/reduction_indices"
   op: "Const"
   input: "^add"
   attr {
@@ -5183,10 +5183,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Sum_1"
+  name: "loss/output_loss/Sum_1"
   op: "Sum"
-  input: "loss/dense_2_loss/mul"
-  input: "loss/dense_2_loss/Sum_1/reduction_indices"
+  input: "loss/output_loss/mul"
+  input: "loss/output_loss/Sum_1/reduction_indices"
   attr {
     key: "T"
     value {
@@ -5219,9 +5219,9 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Neg"
+  name: "loss/output_loss/Neg"
   op: "Neg"
-  input: "loss/dense_2_loss/Sum_1"
+  input: "loss/output_loss/Sum_1"
   attr {
     key: "T"
     value {
@@ -5242,7 +5242,7 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Const_1"
+  name: "loss/output_loss/Const_1"
   op: "Const"
   input: "^add"
   attr {
@@ -5279,10 +5279,10 @@ node {
   }
 }
 node {
-  name: "loss/dense_2_loss/Mean"
+  name: "loss/output_loss/Mean"
   op: "Mean"
-  input: "loss/dense_2_loss/Neg"
-  input: "loss/dense_2_loss/Const_1"
+  input: "loss/output_loss/Neg"
+  input: "loss/output_loss/Const_1"
   attr {
     key: "T"
     value {
@@ -5346,7 +5346,7 @@ node {
   name: "loss/mul"
   op: "Mul"
   input: "loss/mul/x"
-  input: "loss/dense_2_loss/Mean"
+  input: "loss/output_loss/Mean"
   attr {
     key: "T"
     value {
@@ -5464,7 +5464,7 @@ node {
 node {
   name: "metrics/acc/ArgMax_1"
   op: "ArgMax"
-  input: "dense_2/Softmax"
+  input: "output/Softmax"
   input: "metrics/acc/ArgMax_1/dimension"
   attr {
     key: "T"
@@ -5721,7 +5721,7 @@ node {
 node {
   name: "metrics/categorical_accuracy/ArgMax_1"
   op: "ArgMax"
-  input: "dense_2/Softmax"
+  input: "output/Softmax"
   input: "metrics/categorical_accuracy/ArgMax_1/dimension"
   attr {
     key: "T"
@@ -6112,7 +6112,7 @@ node {
   name: "training/Adam/gradients/loss/mul_grad/mul"
   op: "Mul"
   input: "training/Adam/gradients/Fill"
-  input: "loss/dense_2_loss/Mean"
+  input: "loss/output_loss/Mean"
   attr {
     key: "T"
     value {
@@ -6321,14 +6321,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Reshape/shape"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Reshape/shape"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6366,10 +6366,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Reshape"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Reshape"
   op: "Reshape"
   input: "training/Adam/gradients/loss/mul_grad/Reshape_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Reshape/shape"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Reshape/shape"
   attr {
     key: "T"
     value {
@@ -6386,7 +6386,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6404,9 +6404,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Shape"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Shape"
   op: "Shape"
-  input: "loss/dense_2_loss/Neg"
+  input: "loss/output_loss/Neg"
   attr {
     key: "T"
     value {
@@ -6417,7 +6417,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6441,10 +6441,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Tile"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Tile"
   op: "Tile"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Shape"
   attr {
     key: "T"
     value {
@@ -6461,7 +6461,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6479,9 +6479,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Shape_1"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Shape_1"
   op: "Shape"
-  input: "loss/dense_2_loss/Neg"
+  input: "loss/output_loss/Neg"
   attr {
     key: "T"
     value {
@@ -6492,7 +6492,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6516,14 +6516,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Shape_2"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Shape_2"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6558,100 +6558,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Const"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Const"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-          dim {
-            size: 1
-          }
-        }
-      }
-    }
-  }
-  attr {
-    key: "dtype"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-          dim {
-            size: 1
-          }
-        }
-        int_val: 0
-      }
-    }
-  }
-}
-node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Prod"
-  op: "Prod"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Shape_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Const"
-  attr {
-    key: "T"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "Tidx"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@loss/dense_2_loss/Mean"
-      }
-    }
-  }
-  attr {
-    key: "_output_shapes"
-    value {
-      list {
-        shape {
-        }
-      }
-    }
-  }
-  attr {
-    key: "keep_dims"
-    value {
-      b: false
-    }
-  }
-}
-node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Const_1"
-  op: "Const"
-  input: "^add"
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6689,10 +6603,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Prod_1"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Prod"
   op: "Prod"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Shape_2"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Const_1"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Const"
   attr {
     key: "T"
     value {
@@ -6709,7 +6623,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6730,14 +6644,100 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Maximum/y"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Const_1"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
+      }
+    }
+  }
+  attr {
+    key: "_output_shapes"
+    value {
+      list {
+        shape {
+          dim {
+            size: 1
+          }
+        }
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Prod_1"
+  op: "Prod"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Shape_2"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Const_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@loss/output_loss/Mean"
+      }
+    }
+  }
+  attr {
+    key: "_output_shapes"
+    value {
+      list {
+        shape {
+        }
+      }
+    }
+  }
+  attr {
+    key: "keep_dims"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Maximum/y"
+  op: "Const"
+  input: "^add"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6769,10 +6769,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Maximum"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Maximum"
   op: "Maximum"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Prod_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Maximum/y"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Prod_1"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Maximum/y"
   attr {
     key: "T"
     value {
@@ -6783,7 +6783,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6798,10 +6798,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/floordiv"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/floordiv"
   op: "FloorDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Prod"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Maximum"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Prod"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Maximum"
   attr {
     key: "T"
     value {
@@ -6812,7 +6812,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6827,9 +6827,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Cast"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/Cast"
   op: "Cast"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/floordiv"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/floordiv"
   attr {
     key: "DstT"
     value {
@@ -6846,7 +6846,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6861,10 +6861,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/truediv"
+  name: "training/Adam/gradients/loss/output_loss/Mean_grad/truediv"
   op: "RealDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Tile"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/Cast"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Tile"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/Cast"
   attr {
     key: "T"
     value {
@@ -6875,7 +6875,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Mean"
+        s: "loc:@loss/output_loss/Mean"
       }
     }
   }
@@ -6893,9 +6893,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Neg_grad/Neg"
+  name: "training/Adam/gradients/loss/output_loss/Neg_grad/Neg"
   op: "Neg"
-  input: "training/Adam/gradients/loss/dense_2_loss/Mean_grad/truediv"
+  input: "training/Adam/gradients/loss/output_loss/Mean_grad/truediv"
   attr {
     key: "T"
     value {
@@ -6906,7 +6906,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Neg"
+        s: "loc:@loss/output_loss/Neg"
       }
     }
   }
@@ -6924,9 +6924,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Shape"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Shape"
   op: "Shape"
-  input: "loss/dense_2_loss/mul"
+  input: "loss/output_loss/mul"
   attr {
     key: "T"
     value {
@@ -6937,7 +6937,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -6961,14 +6961,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Size"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Size"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7000,10 +7000,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/add"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/add"
   op: "Add"
-  input: "loss/dense_2_loss/Sum_1/reduction_indices"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Size"
+  input: "loss/output_loss/Sum_1/reduction_indices"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Size"
   attr {
     key: "T"
     value {
@@ -7014,7 +7014,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7029,10 +7029,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/mod"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/mod"
   op: "FloorMod"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/add"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Size"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/add"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Size"
   attr {
     key: "T"
     value {
@@ -7043,7 +7043,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7058,14 +7058,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Shape_1"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Shape_1"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7100,14 +7100,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/range/start"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/range/start"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7139,14 +7139,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/range/delta"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/range/delta"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7178,11 +7178,11 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/range"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/range"
   op: "Range"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/range/start"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Size"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/range/delta"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/range/start"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Size"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/range/delta"
   attr {
     key: "Tidx"
     value {
@@ -7193,7 +7193,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7211,14 +7211,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Fill/value"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Fill/value"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7250,10 +7250,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Fill"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Fill"
   op: "Fill"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Shape_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Fill/value"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Fill/value"
   attr {
     key: "T"
     value {
@@ -7264,7 +7264,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7279,12 +7279,12 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/DynamicStitch"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/DynamicStitch"
   op: "DynamicStitch"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/range"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/mod"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Fill"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/range"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/mod"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Fill"
   attr {
     key: "N"
     value {
@@ -7301,7 +7301,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7319,14 +7319,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Maximum/y"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Maximum/y"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7358,10 +7358,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Maximum"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Maximum"
   op: "Maximum"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/DynamicStitch"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Maximum/y"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/DynamicStitch"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Maximum/y"
   attr {
     key: "T"
     value {
@@ -7372,7 +7372,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7390,10 +7390,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/floordiv"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/floordiv"
   op: "FloorDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Maximum"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Maximum"
   attr {
     key: "T"
     value {
@@ -7404,7 +7404,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7422,10 +7422,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Reshape"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Reshape"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Neg_grad/Neg"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/DynamicStitch"
+  input: "training/Adam/gradients/loss/output_loss/Neg_grad/Neg"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/DynamicStitch"
   attr {
     key: "T"
     value {
@@ -7442,7 +7442,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7458,10 +7458,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Tile"
+  name: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Tile"
   op: "Tile"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/floordiv"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/floordiv"
   attr {
     key: "T"
     value {
@@ -7478,7 +7478,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum_1"
+        s: "loc:@loss/output_loss/Sum_1"
       }
     }
   }
@@ -7499,7 +7499,7 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Shape"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/Shape"
   op: "Shape"
   input: "random_shuffle_queue_DequeueUpTo:2"
   input: "^add"
@@ -7513,7 +7513,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7537,9 +7537,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Shape_1"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/Shape_1"
   op: "Shape"
-  input: "loss/dense_2_loss/Log"
+  input: "loss/output_loss/Log"
   attr {
     key: "T"
     value {
@@ -7550,7 +7550,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7574,10 +7574,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/BroadcastGradientArgs"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/BroadcastGradientArgs"
   op: "BroadcastGradientArgs"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -7588,7 +7588,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7611,10 +7611,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/mul"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/mul"
   op: "Mul"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Tile"
-  input: "loss/dense_2_loss/Log"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Tile"
+  input: "loss/output_loss/Log"
   attr {
     key: "T"
     value {
@@ -7625,7 +7625,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7646,10 +7646,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Sum"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/Sum"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/mul"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/BroadcastGradientArgs"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/mul"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/BroadcastGradientArgs"
   attr {
     key: "T"
     value {
@@ -7666,7 +7666,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7688,10 +7688,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Reshape"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/Reshape"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/Sum"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/Shape"
   attr {
     key: "T"
     value {
@@ -7708,7 +7708,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7729,10 +7729,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/mul_1"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/mul_1"
   op: "Mul"
   input: "random_shuffle_queue_DequeueUpTo:2"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_1_grad/Tile"
+  input: "training/Adam/gradients/loss/output_loss/Sum_1_grad/Tile"
   attr {
     key: "T"
     value {
@@ -7743,7 +7743,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7764,10 +7764,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Sum_1"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/Sum_1"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/mul_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/BroadcastGradientArgs:1"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/mul_1"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/BroadcastGradientArgs:1"
   attr {
     key: "T"
     value {
@@ -7784,7 +7784,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7806,10 +7806,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Reshape_1"
+  name: "training/Adam/gradients/loss/output_loss/mul_grad/Reshape_1"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Sum_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/Sum_1"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -7826,7 +7826,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/mul"
+        s: "loc:@loss/output_loss/mul"
       }
     }
   }
@@ -7847,10 +7847,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Log_grad/Reciprocal"
+  name: "training/Adam/gradients/loss/output_loss/Log_grad/Reciprocal"
   op: "Reciprocal"
-  input: "loss/dense_2_loss/clip_by_value"
-  input: "^training/Adam/gradients/loss/dense_2_loss/mul_grad/Reshape_1"
+  input: "loss/output_loss/clip_by_value"
+  input: "^training/Adam/gradients/loss/output_loss/mul_grad/Reshape_1"
   attr {
     key: "T"
     value {
@@ -7861,7 +7861,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Log"
+        s: "loc:@loss/output_loss/Log"
       }
     }
   }
@@ -7882,10 +7882,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Log_grad/mul"
+  name: "training/Adam/gradients/loss/output_loss/Log_grad/mul"
   op: "Mul"
-  input: "training/Adam/gradients/loss/dense_2_loss/mul_grad/Reshape_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/Log_grad/Reciprocal"
+  input: "training/Adam/gradients/loss/output_loss/mul_grad/Reshape_1"
+  input: "training/Adam/gradients/loss/output_loss/Log_grad/Reciprocal"
   attr {
     key: "T"
     value {
@@ -7896,7 +7896,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Log"
+        s: "loc:@loss/output_loss/Log"
       }
     }
   }
@@ -7917,9 +7917,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape"
   op: "Shape"
-  input: "loss/dense_2_loss/clip_by_value/Minimum"
+  input: "loss/output_loss/clip_by_value/Minimum"
   attr {
     key: "T"
     value {
@@ -7930,7 +7930,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -7954,14 +7954,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape_1"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -7996,9 +7996,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape_2"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape_2"
   op: "Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Log_grad/mul"
+  input: "training/Adam/gradients/loss/output_loss/Log_grad/mul"
   attr {
     key: "T"
     value {
@@ -8009,7 +8009,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8033,14 +8033,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/zeros/Const"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/zeros/Const"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8072,10 +8072,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/zeros"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/zeros"
   op: "Fill"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape_2"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/zeros/Const"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape_2"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/zeros/Const"
   attr {
     key: "T"
     value {
@@ -8086,7 +8086,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8107,10 +8107,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/GreaterEqual"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/GreaterEqual"
   op: "GreaterEqual"
-  input: "loss/dense_2_loss/clip_by_value/Minimum"
-  input: "loss/dense_2_loss/Const"
+  input: "loss/output_loss/clip_by_value/Minimum"
+  input: "loss/output_loss/Const"
   attr {
     key: "T"
     value {
@@ -8121,7 +8121,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8142,10 +8142,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/BroadcastGradientArgs"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/BroadcastGradientArgs"
   op: "BroadcastGradientArgs"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -8156,7 +8156,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8179,11 +8179,11 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Select"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Select"
   op: "Select"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/GreaterEqual"
-  input: "training/Adam/gradients/loss/dense_2_loss/Log_grad/mul"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/zeros"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/GreaterEqual"
+  input: "training/Adam/gradients/loss/output_loss/Log_grad/mul"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/zeros"
   attr {
     key: "T"
     value {
@@ -8194,7 +8194,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8215,11 +8215,11 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Select_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Select_1"
   op: "Select"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/GreaterEqual"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/zeros"
-  input: "training/Adam/gradients/loss/dense_2_loss/Log_grad/mul"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/GreaterEqual"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/zeros"
+  input: "training/Adam/gradients/loss/output_loss/Log_grad/mul"
   attr {
     key: "T"
     value {
@@ -8230,7 +8230,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8251,10 +8251,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Sum"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Sum"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Select"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/BroadcastGradientArgs"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Select"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/BroadcastGradientArgs"
   attr {
     key: "T"
     value {
@@ -8271,7 +8271,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8293,10 +8293,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Reshape"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Reshape"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Sum"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape"
   attr {
     key: "T"
     value {
@@ -8313,7 +8313,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8334,10 +8334,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Sum_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Sum_1"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Select_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/BroadcastGradientArgs:1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Select_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/BroadcastGradientArgs:1"
   attr {
     key: "T"
     value {
@@ -8354,7 +8354,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8376,10 +8376,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Reshape_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Reshape_1"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Sum_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Sum_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -8396,7 +8396,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value"
+        s: "loc:@loss/output_loss/clip_by_value"
       }
     }
   }
@@ -8411,9 +8411,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape"
   op: "Shape"
-  input: "loss/dense_2_loss/truediv"
+  input: "loss/output_loss/truediv"
   attr {
     key: "T"
     value {
@@ -8424,7 +8424,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8448,14 +8448,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape_1"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8490,9 +8490,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape_2"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape_2"
   op: "Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Reshape"
   attr {
     key: "T"
     value {
@@ -8503,7 +8503,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8527,14 +8527,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/zeros/Const"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/zeros/Const"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8566,10 +8566,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/zeros"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/zeros"
   op: "Fill"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape_2"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/zeros/Const"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape_2"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/zeros/Const"
   attr {
     key: "T"
     value {
@@ -8580,7 +8580,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8601,10 +8601,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/LessEqual"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/LessEqual"
   op: "LessEqual"
-  input: "loss/dense_2_loss/truediv"
-  input: "loss/dense_2_loss/sub"
+  input: "loss/output_loss/truediv"
+  input: "loss/output_loss/sub"
   attr {
     key: "T"
     value {
@@ -8615,7 +8615,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8636,10 +8636,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/BroadcastGradientArgs"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/BroadcastGradientArgs"
   op: "BroadcastGradientArgs"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -8650,7 +8650,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8673,11 +8673,11 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Select"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Select"
   op: "Select"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/LessEqual"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/zeros"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/LessEqual"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/zeros"
   attr {
     key: "T"
     value {
@@ -8688,7 +8688,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8709,11 +8709,11 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Select_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Select_1"
   op: "Select"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/LessEqual"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/zeros"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/LessEqual"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/zeros"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value_grad/Reshape"
   attr {
     key: "T"
     value {
@@ -8724,7 +8724,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8745,10 +8745,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Sum"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Sum"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Select"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/BroadcastGradientArgs"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Select"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/BroadcastGradientArgs"
   attr {
     key: "T"
     value {
@@ -8765,7 +8765,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8787,10 +8787,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Reshape"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Reshape"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Sum"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape"
   attr {
     key: "T"
     value {
@@ -8807,7 +8807,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8828,10 +8828,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Sum_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Sum_1"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Select_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/BroadcastGradientArgs:1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Select_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/BroadcastGradientArgs:1"
   attr {
     key: "T"
     value {
@@ -8848,7 +8848,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8870,10 +8870,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Reshape_1"
+  name: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Reshape_1"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Sum_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Sum_1"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -8890,7 +8890,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/clip_by_value/Minimum"
+        s: "loc:@loss/output_loss/clip_by_value/Minimum"
       }
     }
   }
@@ -8905,9 +8905,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Shape"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/Shape"
   op: "Shape"
-  input: "dense_2/Softmax"
+  input: "output/Softmax"
   attr {
     key: "T"
     value {
@@ -8918,7 +8918,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -8942,9 +8942,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Shape_1"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/Shape_1"
   op: "Shape"
-  input: "loss/dense_2_loss/Sum"
+  input: "loss/output_loss/Sum"
   attr {
     key: "T"
     value {
@@ -8955,7 +8955,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -8979,10 +8979,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/BroadcastGradientArgs"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/BroadcastGradientArgs"
   op: "BroadcastGradientArgs"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -8993,7 +8993,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9016,10 +9016,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/RealDiv"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/RealDiv"
   op: "RealDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Reshape"
-  input: "loss/dense_2_loss/Sum"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Reshape"
+  input: "loss/output_loss/Sum"
   attr {
     key: "T"
     value {
@@ -9030,7 +9030,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9051,10 +9051,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Sum"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/Sum"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/RealDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/BroadcastGradientArgs"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/RealDiv"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/BroadcastGradientArgs"
   attr {
     key: "T"
     value {
@@ -9071,7 +9071,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9093,10 +9093,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Reshape"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/Reshape"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Sum"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Shape"
   attr {
     key: "T"
     value {
@@ -9113,7 +9113,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9134,9 +9134,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Neg"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/Neg"
   op: "Neg"
-  input: "dense_2/Softmax"
+  input: "output/Softmax"
   attr {
     key: "T"
     value {
@@ -9147,7 +9147,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9168,10 +9168,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/RealDiv_1"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/RealDiv_1"
   op: "RealDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Neg"
-  input: "loss/dense_2_loss/Sum"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Neg"
+  input: "loss/output_loss/Sum"
   attr {
     key: "T"
     value {
@@ -9182,7 +9182,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9203,10 +9203,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/RealDiv_2"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/RealDiv_2"
   op: "RealDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/RealDiv_1"
-  input: "loss/dense_2_loss/Sum"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/RealDiv_1"
+  input: "loss/output_loss/Sum"
   attr {
     key: "T"
     value {
@@ -9217,7 +9217,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9238,10 +9238,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/mul"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/mul"
   op: "Mul"
-  input: "training/Adam/gradients/loss/dense_2_loss/clip_by_value/Minimum_grad/Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/RealDiv_2"
+  input: "training/Adam/gradients/loss/output_loss/clip_by_value/Minimum_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/RealDiv_2"
   attr {
     key: "T"
     value {
@@ -9252,7 +9252,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9273,10 +9273,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Sum_1"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/Sum_1"
   op: "Sum"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/mul"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/BroadcastGradientArgs:1"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/mul"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/BroadcastGradientArgs:1"
   attr {
     key: "T"
     value {
@@ -9293,7 +9293,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9315,10 +9315,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Reshape_1"
+  name: "training/Adam/gradients/loss/output_loss/truediv_grad/Reshape_1"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Sum_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Sum_1"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -9335,7 +9335,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9356,9 +9356,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Shape"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Shape"
   op: "Shape"
-  input: "dense_2/Softmax"
+  input: "output/Softmax"
   attr {
     key: "T"
     value {
@@ -9369,7 +9369,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9393,14 +9393,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Size"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Size"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9432,10 +9432,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/add"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/add"
   op: "Add"
-  input: "loss/dense_2_loss/Sum/reduction_indices"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Size"
+  input: "loss/output_loss/Sum/reduction_indices"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Size"
   attr {
     key: "T"
     value {
@@ -9446,7 +9446,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9461,10 +9461,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/mod"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/mod"
   op: "FloorMod"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/add"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Size"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/add"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Size"
   attr {
     key: "T"
     value {
@@ -9475,7 +9475,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9490,14 +9490,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Shape_1"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Shape_1"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9532,14 +9532,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/range/start"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/range/start"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9571,14 +9571,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/range/delta"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/range/delta"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9610,11 +9610,11 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/range"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/range"
   op: "Range"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/range/start"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Size"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/range/delta"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/range/start"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Size"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/range/delta"
   attr {
     key: "Tidx"
     value {
@@ -9625,7 +9625,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9643,14 +9643,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Fill/value"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Fill/value"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9682,10 +9682,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Fill"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Fill"
   op: "Fill"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Shape_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Fill/value"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Shape_1"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Fill/value"
   attr {
     key: "T"
     value {
@@ -9696,7 +9696,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9711,12 +9711,12 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/DynamicStitch"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/DynamicStitch"
   op: "DynamicStitch"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/range"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/mod"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Fill"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/range"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/mod"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Fill"
   attr {
     key: "N"
     value {
@@ -9733,7 +9733,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9751,14 +9751,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Maximum/y"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Maximum/y"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9790,10 +9790,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Maximum"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Maximum"
   op: "Maximum"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/DynamicStitch"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Maximum/y"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/DynamicStitch"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Maximum/y"
   attr {
     key: "T"
     value {
@@ -9804,7 +9804,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9822,10 +9822,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/floordiv"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/floordiv"
   op: "FloorDiv"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Shape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Maximum"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Shape"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Maximum"
   attr {
     key: "T"
     value {
@@ -9836,7 +9836,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9854,10 +9854,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Reshape"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Reshape"
   op: "Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Reshape_1"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/DynamicStitch"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Reshape_1"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/DynamicStitch"
   attr {
     key: "T"
     value {
@@ -9874,7 +9874,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9890,10 +9890,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Tile"
+  name: "training/Adam/gradients/loss/output_loss/Sum_grad/Tile"
   op: "Tile"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/floordiv"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/floordiv"
   attr {
     key: "T"
     value {
@@ -9910,7 +9910,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/Sum"
+        s: "loc:@loss/output_loss/Sum"
       }
     }
   }
@@ -9933,8 +9933,8 @@ node {
 node {
   name: "training/Adam/gradients/AddN"
   op: "AddN"
-  input: "training/Adam/gradients/loss/dense_2_loss/truediv_grad/Reshape"
-  input: "training/Adam/gradients/loss/dense_2_loss/Sum_grad/Tile"
+  input: "training/Adam/gradients/loss/output_loss/truediv_grad/Reshape"
+  input: "training/Adam/gradients/loss/output_loss/Sum_grad/Tile"
   attr {
     key: "N"
     value {
@@ -9951,7 +9951,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@loss/dense_2_loss/truediv"
+        s: "loc:@loss/output_loss/truediv"
       }
     }
   }
@@ -9972,10 +9972,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/Softmax_grad/mul"
+  name: "training/Adam/gradients/output/Softmax_grad/mul"
   op: "Mul"
   input: "training/Adam/gradients/AddN"
-  input: "dense_2/Softmax"
+  input: "output/Softmax"
   attr {
     key: "T"
     value {
@@ -9986,7 +9986,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/Softmax"
+        s: "loc:@output/Softmax"
       }
     }
   }
@@ -10007,14 +10007,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/Softmax_grad/Sum/reduction_indices"
+  name: "training/Adam/gradients/output/Softmax_grad/Sum/reduction_indices"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/Softmax"
+        s: "loc:@output/Softmax"
       }
     }
   }
@@ -10052,10 +10052,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/Softmax_grad/Sum"
+  name: "training/Adam/gradients/output/Softmax_grad/Sum"
   op: "Sum"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/mul"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/Sum/reduction_indices"
+  input: "training/Adam/gradients/output/Softmax_grad/mul"
+  input: "training/Adam/gradients/output/Softmax_grad/Sum/reduction_indices"
   attr {
     key: "T"
     value {
@@ -10072,7 +10072,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/Softmax"
+        s: "loc:@output/Softmax"
       }
     }
   }
@@ -10096,14 +10096,14 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/Softmax_grad/Reshape/shape"
+  name: "training/Adam/gradients/output/Softmax_grad/Reshape/shape"
   op: "Const"
   input: "^add"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/Softmax"
+        s: "loc:@output/Softmax"
       }
     }
   }
@@ -10141,10 +10141,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/Softmax_grad/Reshape"
+  name: "training/Adam/gradients/output/Softmax_grad/Reshape"
   op: "Reshape"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/Sum"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/Reshape/shape"
+  input: "training/Adam/gradients/output/Softmax_grad/Sum"
+  input: "training/Adam/gradients/output/Softmax_grad/Reshape/shape"
   attr {
     key: "T"
     value {
@@ -10161,7 +10161,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/Softmax"
+        s: "loc:@output/Softmax"
       }
     }
   }
@@ -10182,10 +10182,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/Softmax_grad/sub"
+  name: "training/Adam/gradients/output/Softmax_grad/sub"
   op: "Sub"
   input: "training/Adam/gradients/AddN"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/Reshape"
+  input: "training/Adam/gradients/output/Softmax_grad/Reshape"
   attr {
     key: "T"
     value {
@@ -10196,7 +10196,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/Softmax"
+        s: "loc:@output/Softmax"
       }
     }
   }
@@ -10217,10 +10217,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/Softmax_grad/mul_1"
+  name: "training/Adam/gradients/output/Softmax_grad/mul_1"
   op: "Mul"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/sub"
-  input: "dense_2/Softmax"
+  input: "training/Adam/gradients/output/Softmax_grad/sub"
+  input: "output/Softmax"
   attr {
     key: "T"
     value {
@@ -10231,7 +10231,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/Softmax"
+        s: "loc:@output/Softmax"
       }
     }
   }
@@ -10252,9 +10252,9 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/BiasAdd_grad/BiasAddGrad"
+  name: "training/Adam/gradients/output/BiasAdd_grad/BiasAddGrad"
   op: "BiasAddGrad"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/mul_1"
+  input: "training/Adam/gradients/output/Softmax_grad/mul_1"
   attr {
     key: "T"
     value {
@@ -10265,7 +10265,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/BiasAdd"
+        s: "loc:@output/BiasAdd"
       }
     }
   }
@@ -10289,10 +10289,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/MatMul_grad/MatMul"
+  name: "training/Adam/gradients/output/MatMul_grad/MatMul"
   op: "MatMul"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/mul_1"
-  input: "dense_2/kernel/read"
+  input: "training/Adam/gradients/output/Softmax_grad/mul_1"
+  input: "output/kernel/read"
   attr {
     key: "T"
     value {
@@ -10303,7 +10303,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/MatMul"
+        s: "loc:@output/MatMul"
       }
     }
   }
@@ -10336,10 +10336,10 @@ node {
   }
 }
 node {
-  name: "training/Adam/gradients/dense_2/MatMul_grad/MatMul_1"
+  name: "training/Adam/gradients/output/MatMul_grad/MatMul_1"
   op: "MatMul"
   input: "dropout_1/dropout/mul"
-  input: "training/Adam/gradients/dense_2/Softmax_grad/mul_1"
+  input: "training/Adam/gradients/output/Softmax_grad/mul_1"
   attr {
     key: "T"
     value {
@@ -10350,7 +10350,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/MatMul"
+        s: "loc:@output/MatMul"
       }
     }
   }
@@ -10496,7 +10496,7 @@ node {
 node {
   name: "training/Adam/gradients/dropout_1/dropout/mul_grad/mul"
   op: "Mul"
-  input: "training/Adam/gradients/dense_2/MatMul_grad/MatMul"
+  input: "training/Adam/gradients/output/MatMul_grad/MatMul"
   input: "dropout_1/dropout/Floor"
   attr {
     key: "T"
@@ -10615,7 +10615,7 @@ node {
   name: "training/Adam/gradients/dropout_1/dropout/mul_grad/mul_1"
   op: "Mul"
   input: "dropout_1/dropout/div"
-  input: "training/Adam/gradients/dense_2/MatMul_grad/MatMul"
+  input: "training/Adam/gradients/output/MatMul_grad/MatMul"
   attr {
     key: "T"
     value {
@@ -19948,7 +19948,7 @@ node {
   name: "training/Adam/mul_27"
   op: "Mul"
   input: "training/Adam/sub_17"
-  input: "training/Adam/gradients/dense_2/MatMul_grad/MatMul_1"
+  input: "training/Adam/gradients/output/MatMul_grad/MatMul_1"
   attr {
     key: "T"
     value {
@@ -20081,7 +20081,7 @@ node {
 node {
   name: "training/Adam/Square_5"
   op: "Square"
-  input: "training/Adam/gradients/dense_2/MatMul_grad/MatMul_1"
+  input: "training/Adam/gradients/output/MatMul_grad/MatMul_1"
   attr {
     key: "T"
     value {
@@ -20415,7 +20415,7 @@ node {
 node {
   name: "training/Adam/sub_19"
   op: "Sub"
-  input: "dense_2/kernel/read"
+  input: "output/kernel/read"
   input: "training/Adam/truediv_6"
   attr {
     key: "T"
@@ -20536,7 +20536,7 @@ node {
 node {
   name: "training/Adam/Assign_17"
   op: "Assign"
-  input: "dense_2/kernel"
+  input: "output/kernel"
   input: "training/Adam/sub_19"
   attr {
     key: "T"
@@ -20548,7 +20548,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -20661,7 +20661,7 @@ node {
   name: "training/Adam/mul_32"
   op: "Mul"
   input: "training/Adam/sub_20"
-  input: "training/Adam/gradients/dense_2/BiasAdd_grad/BiasAddGrad"
+  input: "training/Adam/gradients/output/BiasAdd_grad/BiasAddGrad"
   attr {
     key: "T"
     value {
@@ -20785,7 +20785,7 @@ node {
 node {
   name: "training/Adam/Square_6"
   op: "Square"
-  input: "training/Adam/gradients/dense_2/BiasAdd_grad/BiasAddGrad"
+  input: "training/Adam/gradients/output/BiasAdd_grad/BiasAddGrad"
   attr {
     key: "T"
     value {
@@ -21092,7 +21092,7 @@ node {
 node {
   name: "training/Adam/sub_22"
   op: "Sub"
-  input: "dense_2/bias/read"
+  input: "output/bias/read"
   input: "training/Adam/truediv_7"
   attr {
     key: "T"
@@ -21204,7 +21204,7 @@ node {
 node {
   name: "training/Adam/Assign_20"
   op: "Assign"
-  input: "dense_2/bias"
+  input: "output/bias"
   input: "training/Adam/sub_22"
   attr {
     key: "T"
@@ -21216,7 +21216,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -22843,8 +22843,8 @@ node {
   input: "^conv1d_1/bias/Assign"
   input: "^dense_1/kernel/Assign"
   input: "^dense_1/bias/Assign"
-  input: "^dense_2/kernel/Assign"
-  input: "^dense_2/bias/Assign"
+  input: "^output/kernel/Assign"
+  input: "^output/bias/Assign"
   input: "^Adam/iterations/Assign"
   input: "^Adam/lr/Assign"
   input: "^Adam/beta_1/Assign"
@@ -23046,12 +23046,12 @@ node {
 node {
   name: "report_uninitialized_variables/IsVariableInitialized_6"
   op: "IsVariableInitialized"
-  input: "dense_2/kernel"
+  input: "output/kernel"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -23074,12 +23074,12 @@ node {
 node {
   name: "report_uninitialized_variables/IsVariableInitialized_7"
   op: "IsVariableInitialized"
-  input: "dense_2/bias"
+  input: "output/bias"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -23865,8 +23865,8 @@ node {
         string_val: "conv1d_1/bias"
         string_val: "dense_1/kernel"
         string_val: "dense_1/bias"
-        string_val: "dense_2/kernel"
-        string_val: "dense_2/bias"
+        string_val: "output/kernel"
+        string_val: "output/bias"
         string_val: "Adam/iterations"
         string_val: "Adam/lr"
         string_val: "Adam/beta_1"
@@ -24952,12 +24952,12 @@ node {
 node {
   name: "report_uninitialized_variables_1/IsVariableInitialized_6"
   op: "IsVariableInitialized"
-  input: "dense_2/kernel"
+  input: "output/kernel"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -24980,12 +24980,12 @@ node {
 node {
   name: "report_uninitialized_variables_1/IsVariableInitialized_7"
   op: "IsVariableInitialized"
-  input: "dense_2/bias"
+  input: "output/bias"
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -25655,8 +25655,8 @@ node {
         string_val: "conv1d_1/bias"
         string_val: "dense_1/kernel"
         string_val: "dense_1/bias"
-        string_val: "dense_2/kernel"
-        string_val: "dense_2/bias"
+        string_val: "output/kernel"
+        string_val: "output/bias"
         string_val: "Adam/iterations"
         string_val: "Adam/lr"
         string_val: "Adam/beta_1"
@@ -26560,7 +26560,7 @@ node {
         dtype: DT_STRING
         tensor_shape {
         }
-        string_val: "_temp_98d62d19c428484c888d6535b9139da8/part"
+        string_val: "_temp_c5852925ad7a4fa6b48399bdc1effcd2/part"
       }
     }
   }
@@ -26708,9 +26708,9 @@ node {
         string_val: "conv1d_1/kernel"
         string_val: "dense_1/bias"
         string_val: "dense_1/kernel"
-        string_val: "dense_2/bias"
-        string_val: "dense_2/kernel"
         string_val: "global_step"
+        string_val: "output/bias"
+        string_val: "output/kernel"
         string_val: "text/embeddings"
         string_val: "training/Adam/Variable"
         string_val: "training/Adam/Variable_1"
@@ -26807,9 +26807,9 @@ node {
   input: "conv1d_1/kernel"
   input: "dense_1/bias"
   input: "dense_1/kernel"
-  input: "dense_2/bias"
-  input: "dense_2/kernel"
   input: "global_step"
+  input: "output/bias"
+  input: "output/kernel"
   input: "text/embeddings"
   input: "training/Adam/Variable"
   input: "training/Adam/Variable_1"
@@ -26838,9 +26838,9 @@ node {
         type: DT_FLOAT
         type: DT_FLOAT
         type: DT_FLOAT
-        type: DT_FLOAT
-        type: DT_FLOAT
         type: DT_INT64
+        type: DT_FLOAT
+        type: DT_FLOAT
         type: DT_FLOAT
         type: DT_FLOAT
         type: DT_FLOAT
@@ -28253,7 +28253,7 @@ node {
             size: 1
           }
         }
-        string_val: "dense_2/bias"
+        string_val: "global_step"
       }
     }
   }
@@ -28314,7 +28314,7 @@ node {
     key: "dtypes"
     value {
       list {
-        type: DT_FLOAT
+        type: DT_INT64
       }
     }
   }
@@ -28322,19 +28322,19 @@ node {
 node {
   name: "save/Assign_9"
   op: "Assign"
-  input: "dense_2/bias"
+  input: "global_step"
   input: "save/RestoreV2_9"
   attr {
     key: "T"
     value {
-      type: DT_FLOAT
+      type: DT_INT64
     }
   }
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/bias"
+        s: "loc:@global_step"
       }
     }
   }
@@ -28343,9 +28343,6 @@ node {
     value {
       list {
         shape {
-          dim {
-            size: 11
-          }
         }
       }
     }
@@ -28394,7 +28391,7 @@ node {
             size: 1
           }
         }
-        string_val: "dense_2/kernel"
+        string_val: "output/bias"
       }
     }
   }
@@ -28463,7 +28460,7 @@ node {
 node {
   name: "save/Assign_10"
   op: "Assign"
-  input: "dense_2/kernel"
+  input: "output/bias"
   input: "save/RestoreV2_10"
   attr {
     key: "T"
@@ -28475,7 +28472,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@dense_2/kernel"
+        s: "loc:@output/bias"
       }
     }
   }
@@ -28484,9 +28481,6 @@ node {
     value {
       list {
         shape {
-          dim {
-            size: 100
-          }
           dim {
             size: 11
           }
@@ -28538,7 +28532,7 @@ node {
             size: 1
           }
         }
-        string_val: "global_step"
+        string_val: "output/kernel"
       }
     }
   }
@@ -28599,7 +28593,7 @@ node {
     key: "dtypes"
     value {
       list {
-        type: DT_INT64
+        type: DT_FLOAT
       }
     }
   }
@@ -28607,19 +28601,19 @@ node {
 node {
   name: "save/Assign_11"
   op: "Assign"
-  input: "global_step"
+  input: "output/kernel"
   input: "save/RestoreV2_11"
   attr {
     key: "T"
     value {
-      type: DT_INT64
+      type: DT_FLOAT
     }
   }
   attr {
     key: "_class"
     value {
       list {
-        s: "loc:@global_step"
+        s: "loc:@output/kernel"
       }
     }
   }
@@ -28628,6 +28622,12 @@ node {
     value {
       list {
         shape {
+          dim {
+            size: 100
+          }
+          dim {
+            size: 11
+          }
         }
       }
     }

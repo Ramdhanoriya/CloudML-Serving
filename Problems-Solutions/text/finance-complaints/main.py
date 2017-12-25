@@ -45,8 +45,21 @@ predict_feature, predict_target = get_data_set('dataset/validpreprocess.csv')
 predict_feature = enocde_text(tokenizer, predict_feature, max_length)
 
 predict_target = predict_target.astype(np.int32)
-predict_target = tf.keras.utils.to_categorical(predict_target, num_classes=11)
 
-predict_results = keras_estimator.predict(input_fn=input_function(predict_feature, predict_target, shuffle=False, batch_size=32, epochs=1))
+predict_target_cat = tf.keras.utils.to_categorical(predict_target, num_classes=11)
 
-print(list(predict_results))
+predict_results = keras_estimator.predict(input_fn=input_function(predict_feature, labels=predict_target_cat, shuffle=False, batch_size=32, epochs=1))
+
+predictions = list(predict_results)
+predicted_values = []
+for p in predictions:
+    class_val = np.argmax(p['output'])
+    print('Predicted = ', class_val, p)
+    predicted_values.append(class_val)
+
+from sklearn.metrics import accuracy_score
+
+print('Predicted = ', predicted_values)
+print('Actual =', predict_target)
+
+print('Accuracy = ', accuracy_score(y_pred=predicted_values, y_true=predict_target))
