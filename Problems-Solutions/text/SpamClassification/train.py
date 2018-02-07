@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.contrib import training
-from model.embedding_model import model_fn, input_fn
+from model.bag_of_words import model_fn, input_fn, serving_fn
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -13,10 +13,12 @@ hparams = training.HParams(
     N_WORDS=N_WORDS
 )
 
-estimator = tf.estimator.Estimator(model_fn=model_fn, params=hparams, model_dir='build/')
+estimator = tf.estimator.Estimator(model_fn=model_fn, params=hparams, model_dir='build2/')
 
 estimator.train(input_fn=lambda: input_fn('data/train-data.tsv', shuffle=True, repeat_count=5))
 
 evaluated_results = estimator.evaluate(input_fn=lambda: input_fn('data/valid-data.tsv', shuffle=False, repeat_count=1))
 
 print("# Evaluated Results: {}".format(evaluated_results))
+
+estimator.export_savedmodel(export_dir_base='build2', serving_input_receiver_fn=serving_fn, as_text=True)
