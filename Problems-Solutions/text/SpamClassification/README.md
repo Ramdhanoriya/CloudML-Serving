@@ -13,11 +13,10 @@
 - embedding_model.py - Based on Representation learning for very short texts using weighted word embedding aggregation research paper
 - bag_of_words.py - Simple bag of words model
 
+Accuracy = 0.95
+===============
 ![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/SpamClassification/images/Accuracy.PNG)
 
-Creating Serialized model (.pb)
-
-Accuracy = 0.95
 Average Loss = 0.2246
-=======
+=====================
 ![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/SpamClassification/images/Loss.PNG)
