@@ -1,19 +1,26 @@
-# Tensorflow-Solutions
+# Cloud ML Solutions
 
 The idea is to solve many real-world problems using Machine Learning. We will use various open dataset available
-from kaggle and other sources to solve the needed problem using Tensorflow. This reposiotory will only use tensorflow
-or tensorflow related packages for building machine learning models
+from kaggle and other sources to solve the required problem using Tensorflow, scikit and deploying it in cloud ml. 
 
 # Covers:
 
+- Cloud-ML
 - Tensorflow-Estimators
 - Tensorboard
 - Tensorflow Data Pipeline
 - Tensorflow Serving
 - Keras
+- Scikit-Learn
 - Many More......
 
 # Available Solutions
 
-- Iris - Use new tensorflow data pipeline(i.e. Dataset) to build a model
-- Mnist - Using Custom Estimator i.e. Keras to build model and serving
+- Iris
+- Mnist
+- Kaggle consumer finance complaints(WIP)
+- SpamClassification
+
+<div align="center">
+  <img src="https://www.kdnuggets.com/wp-content/uploads/skflow.jpg"><br><br>
+</div>
