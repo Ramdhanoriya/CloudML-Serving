@@ -100,3 +100,16 @@ def model_fn(features, labels, mode, params):
         }
 
         return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metrics_ops)
+
+		
+def serving_fn():
+    receiver_tensor = {
+        commons.FEATURE_COL: tf.placeholder(dtype=tf.string, shape=None)
+    }
+
+    features = {
+        key: tensor
+        for key, tensor in receiver_tensor.items()
+    }
+
+    return tf.estimator.export.ServingInputReceiver(features, receiver_tensor)

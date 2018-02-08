@@ -1,8 +1,8 @@
-# IRIS Tensorflow Example
+# SMS Spam-Ham classification
 
 - Tensorflow 1.4
 - Using new Dataset API for Input pipeline
-- Creating Serialized model (.pb) for tensorflow serving which can be deployed in cloud ml
+- Creating Serialized model (.pbtxt) for tensorflow serving which can be deployed in cloud ml
 - Local prediction using serialized file
 
 # Instructions
@@ -11,7 +11,7 @@
 - train.py - Training the model
 - inference.py - model inference
 - embedding_model.py - Based on Representation learning for very short texts using weighted word embedding aggregation research paper
-- bag_of_words.py - Simple bag of words model
+- bag_of_words.py - Simple bag of words model using tensorflow
 
 Accuracy = 0.95
 ===============
