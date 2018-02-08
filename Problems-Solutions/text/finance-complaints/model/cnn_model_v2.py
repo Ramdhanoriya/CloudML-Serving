@@ -35,7 +35,7 @@ def input_fn(file_name, shuffle=False, repeat_count=1, batch_size=128):
         batch_size=batch_size)
     iterator = data_set.make_one_shot_iterator()
     features, target = iterator.get_next()
-    return features, target
+    return features, tf.string_to_number(target, out_type=tf.int64)
 
 def model_fn(features, labels, mode, params):
     vocab_table = lookup.index_table_from_file(vocabulary_file='dataset/vocab.csv', num_oov_buckets=1, default_value=-1)
@@ -77,7 +77,7 @@ def model_fn(features, labels, mode, params):
 
         return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions, export_outputs=export_outputs)
 
-    labels = tf.cast(labels, dtype=tf.int64)
+    #labels = tf.cast(labels, dtype=tf.int32)
 
     weights = features[commons.WEIGHT_COLUNM_NAME]
     loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits, weights=weights)
