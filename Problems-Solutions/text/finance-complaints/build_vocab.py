@@ -1,5 +1,8 @@
 import pandas as pd
+
 from model.commons import FEATURE_COL, PAD_WORD
+
+__author__ = 'KKishore'
 
 
 def build_vocab(file_name):
@@ -11,7 +14,7 @@ def build_vocab(file_name):
         words = text.split(' ')
         word_set = set(words)
         vocab_set.update(word_set)
-    #vocab_set.remove('')
+    # vocab_set.remove('')
     return list(vocab_set)
 
 

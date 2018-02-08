@@ -1,3 +1,5 @@
+__author__ = 'KKishore'
+
 PAD_WORD = '#=KISHORE=#'
 
 HEADERS = ['label', 'text']
@@ -7,4 +9,4 @@ WEIGHT_COLUNM_NAME = 'weight'
 TARGET_SIZE = 11
 HEADER_DEFAULTS = [['NA'], ['NA']]
 
-MAX_DOCUMENT_LENGTH = 200
+MAX_DOCUMENT_LENGTH = 500

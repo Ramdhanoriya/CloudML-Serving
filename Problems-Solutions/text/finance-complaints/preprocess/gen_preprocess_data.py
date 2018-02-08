@@ -1,7 +1,9 @@
+import re
+
 import pandas as pd
 import spacy
 
-from clean import clean_text
+__author__ = 'KKishore'
 
 selected = ['product', 'consumer_complaint_narrative']
 
@@ -9,8 +11,7 @@ nlp = spacy.load('en')
 
 
 def clean_str(x):
-    s = clean_text.preprocess_text(x, fix_unicode=False, lowercase=True, transliterate=True, no_punct=True)
-    '''
+    s = x
     s = re.sub(r"[^A-Za-z0-9(),!?\'\`]", " ", s)
     s = re.sub(r"\'s", " \'s", s)
     s = re.sub(r"\'ve", " \'ve", s)
@@ -27,7 +28,6 @@ def clean_str(x):
     s = re.sub(r'\S*(x{2,}|X{2,})\S*', "xxx", s)
     s = re.sub(r'[^\x00-\x7F]+', "", s)
     s = re.sub(r'"', "", s)
-    '''
     s = s.strip().lower()
     return s
 
