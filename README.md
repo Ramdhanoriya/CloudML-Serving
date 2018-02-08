@@ -24,7 +24,7 @@ This repository also contains implementation of research papers in tensorflow wh
 
 
 <div align="center">
-  <img src="https://www.kdnuggets.com/wp-content/uploads/skflow.jpg"><br><br>
+  <img src="https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/extras/Tensorflow-Scikit.jpg"><br><br>
   <img src="https://github.com/kishorenayar/Cloud-ML-Solutions/blob/master/extras/image00.png"><br><br>
   <img src="https://github.com/kishorenayar/Cloud-ML-Solutions/blob/master/extras/keras-logo-2018-large-1200.png"><br><br>
 </div>
