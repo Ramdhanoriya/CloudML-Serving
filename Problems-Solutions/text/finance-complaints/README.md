@@ -1,6 +1,6 @@
 # Kaggle Consumer Finance Complaints Classification
 
-More on here ![alt text](https://www.kaggle.com/cfpb/us-consumer-finance-complaints)
+More on [here](https://www.kaggle.com/cfpb/us-consumer-finance-complaints)
 
 - Tensorflow 1.4
 - Using new Dataset API for Input pipeline
