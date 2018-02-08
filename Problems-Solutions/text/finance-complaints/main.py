@@ -14,7 +14,7 @@ x_test, y_test = get_data_set('dataset/testpreprocess.csv')
 print('Train Data = ', np.shape(x_train))
 print('Test Data = ', np.shape(x_test))
 
-tokenizer = tf.keras.preprocessing.text.Tokenizer(num_words=1000)
+tokenizer = tf.keras.preprocessing.text.Tokenizer()
 tokenizer.fit_on_texts(x_train)
 
 try:
@@ -26,7 +26,7 @@ with open('tokenizer.p', 'wb') as fp:
     pickle.dump(tokenizer, fp, protocol=pickle.HIGHEST_PROTOCOL)
 
 vocab_size = len(tokenizer.word_index) + 1
-max_length = max([len(s.split()) for s in x_train])
+max_length = 500#max([len(s.split()) for s in x_train])
 
 print('Vocab Size = ', vocab_size)
 print('Max Length = ', max_length)
@@ -49,9 +49,9 @@ y_test = tf.keras.utils.to_categorical(y_test, num_classes=11)
 keras_estimator = model_estimator(vocab_size, max_length)
 
 print('Training.....')
-keras_estimator.train(input_fn=input_function(x_train, y_train, shuffle=True, batch_size=37, epochs=10))
+keras_estimator.train(input_fn=input_function(x_train, y_train, shuffle=True, batch_size=128, epochs=5))
 
 print('Evaluating......')
-eval_results = keras_estimator.evaluate(input_fn=input_function(x_test, y_test, shuffle=False, batch_size=37, epochs=1))
+eval_results = keras_estimator.evaluate(input_fn=input_function(x_test, y_test, shuffle=False, batch_size=128, epochs=1))
 
 print('Evaluated Results - '.format(eval_results))

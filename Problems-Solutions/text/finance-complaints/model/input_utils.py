@@ -7,7 +7,7 @@ selected = ['product', 'consumer_complaint_narrative']
 
 def input_function(features, labels, shuffle=False, batch_size=128, epochs=1):
     input_fn = tf.estimator.inputs.numpy_input_fn(
-        x={'text_input': np.array(features, dtype=np.float32)},
+        x={'input_1': np.array(features, dtype=np.float32)},
         y=np.array(labels, dtype=np.float32),
         shuffle=shuffle,
         batch_size=batch_size,
