@@ -1,7 +1,8 @@
-# Cloud ML Solutions
+# Tensorflow Solutions
 
-The idea is to solve many real-world problems using Machine Learning. We will use various open dataset available
-from kaggle and other sources to solve the required problem using Tensorflow, scikit and deploying it in cloud ml. 
+The idea is to solve many real-world data problems using Machine Learning with Tensorflow. We will use various open dataset available from kaggle and other sources to solve the required problem using Tensorflow, scikit and deploying it in cloud ml.
+
+This repository also contains implementation of research papers in tensorflow which can be deployed in cloud-ml
 
 # Covers:
 
@@ -16,11 +17,10 @@ from kaggle and other sources to solve the required problem using Tensorflow, sc
 
 # Available Solutions
 
+- Kaggle consumer finance complaints
+- SpamClassification
 - Iris
 - Mnist
-- Kaggle consumer finance complaints(WIP)
-- SpamClassification
-
 
 
 <div align="center">
