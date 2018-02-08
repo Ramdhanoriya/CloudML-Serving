@@ -18,7 +18,7 @@ This repository also contains implementation of research papers in tensorflow wh
 # Available Solutions
 
 - Kaggle consumer finance complaints
-- SpamClassification
+- Sms SpamClassification
 - Iris
 - Mnist
 
