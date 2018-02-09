@@ -1,5 +1,8 @@
+__author__ = 'KKishore'
+
 import tensorflow as tf
 from tensorflow.contrib import training
+
 from model.bag_of_words import model_fn, input_fn, serving_fn
 
 tf.logging.set_verbosity(tf.logging.INFO)

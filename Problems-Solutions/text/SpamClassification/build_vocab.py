@@ -1,3 +1,5 @@
+__author__ = 'KKishore'
+
 import pandas as pd
 
 from model.commons import FEATURE_COL, PAD_WORD
@@ -25,6 +27,3 @@ with open('data/vocab.csv', 'w', encoding='utf-8') as vocab_file:
 
 with open('data/nwords.csv', mode='w') as n_words:
     n_words.write(str(len(vocab_list)))
-
-
-

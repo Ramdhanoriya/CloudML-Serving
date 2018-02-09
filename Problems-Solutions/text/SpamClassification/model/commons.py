@@ -1,3 +1,5 @@
+__author__ = 'KKishore'
+
 PAD_WORD = '#=KISHORE=#'
 
 HEADERS = ['class', 'sms']
@@ -9,7 +11,3 @@ TARGET_SIZE = len(TARGET_LABELS)
 HEADER_DEFAULTS = [['NA'], ['NA']]
 
 MAX_DOCUMENT_LENGTH = 100
-
-
-
-

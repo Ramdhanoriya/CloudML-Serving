@@ -1,6 +1,10 @@
+__author__ = 'KKishore'
+
+import multiprocessing
+
 import tensorflow as tf
 from tensorflow.contrib import lookup, layers
-import multiprocessing
+
 from model import commons
 
 
@@ -101,7 +105,7 @@ def model_fn(features, labels, mode, params):
 
         return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metrics_ops)
 
-		
+
 def serving_fn():
     receiver_tensor = {
         commons.FEATURE_COL: tf.placeholder(dtype=tf.string, shape=None)
