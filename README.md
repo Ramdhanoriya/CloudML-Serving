@@ -6,21 +6,19 @@ This repository also contains implementation of research papers in tensorflow wh
 
 # Covers:
 
-- Cloud-ML
-- Tensorflow-Estimators
-- Tensorboard
-- Tensorflow Data Pipeline
-- Tensorflow Serving
-- Keras
-- Scikit-Learn
-- Many More......
+- How to build a serving model in Tensorflow ?
+- How to use estimator effectively
+- Serving the model in cloud ml
+- Using Keras with Tensorflow Estimator
+- How to serve scikit-learn models in Cloud-ML(WIP)
+- Many More.......
 
 # Available Solutions
 
-- Kaggle consumer finance complaints
-- Sms SpamClassification
-- Iris
-- Mnist
+- [Kaggle consumer finance complaints - Based on Yoon Kim Research paper](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/text/finance-complaints)
+- [Sms SpamClassification - Setting custom weights for imbalanced class, BOW model](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/text/SpamClassification)
+- [Iris - Canned Estimator](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/structured-data/iris)
+- [Mnist - Custom Estimator using Keras and more](https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/Problems-Solutions/structured-data/mnist/mnist.py)
 
 
 <div align="center">
