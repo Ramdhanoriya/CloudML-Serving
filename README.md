@@ -11,6 +11,12 @@ The idea is to solve many real-world data problems using Machine Learning with T
 
 This repository also contains implementation of research papers in tensorflow which can be deployed in cloud-ml
 
+# Research Papers Implementation
+
+- [FastText](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Research-Papers/FastText)
+
+
+
 # Available Solutions
 
 - [Kaggle consumer finance complaints - Based on Yoon Kim Research paper](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/text/finance-complaints)
