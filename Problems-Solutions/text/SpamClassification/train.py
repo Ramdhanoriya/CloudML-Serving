@@ -16,7 +16,7 @@ hparams = training.HParams(
     N_WORDS=N_WORDS
 )
 
-estimator = tf.estimator.Estimator(model_fn=model_fn, params=hparams, model_dir='build2/')
+estimator = tf.estimator.Estimator(model_fn=model_fn, params=hparams, model_dir='build/')
 
 estimator.train(input_fn=lambda: input_fn('data/train-data.tsv', shuffle=True, repeat_count=5))
 
@@ -24,4 +24,4 @@ evaluated_results = estimator.evaluate(input_fn=lambda: input_fn('data/valid-dat
 
 print("# Evaluated Results: {}".format(evaluated_results))
 
-estimator.export_savedmodel(export_dir_base='build2', serving_input_receiver_fn=serving_fn, as_text=True)
+estimator.export_savedmodel(export_dir_base='serving', serving_input_receiver_fn=serving_fn, as_text=True)
