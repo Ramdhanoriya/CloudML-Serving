@@ -18,8 +18,8 @@
 
 Accuracy = 0.92
 ===============
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/finance-complaints/images/Accuracy.PNG)
+![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Research-Papers/FastText/images/Accuracy.PNG)
 
-Average Loss = 0.5
+Average Loss = 0.22
 =====================
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/finance-complaints/images/Loss.PNG)
+![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Research-Papers/FastText/images/Loss.PNG)

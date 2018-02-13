@@ -96,8 +96,8 @@ class FastTextEstimator(tf.estimator.Estimator):
         probabilities = tf.nn.softmax(logits)
         predicted_indices = tf.argmax(probabilities, axis=1)
 
-        tf.summary.histogram(average_vectors.name, average_vectors)
-        tf.summary.histogram(probabilities.name, probabilities)
+        tf.summary.histogram('fasttext', average_vectors)
+        tf.summary.histogram('softmax', probabilities)
 
         if mode == tf.estimator.ModeKeys.PREDICT:
             predictions = {
