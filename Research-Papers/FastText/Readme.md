@@ -11,15 +11,15 @@
 
 # Instructions
 
-- Download the dataset from [here]https://drive.google.com/open?id=1j9d1zyEaxVRwTm2zjOiQdJ5SxcusvZ_N
+- Download the dataset from [here](https://drive.google.com/open?id=1j9d1zyEaxVRwTm2zjOiQdJ5SxcusvZ_N)
 - Extract the zip file to dataset folder.
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 
 Accuracy = 0.92
 ===============
-![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Research-Papers/FastText/images/Accuracy.PNG)
+![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/Research-Papers/FastText/images/Accuracy.PNG)
 
 Average Loss = 0.22
 =====================
-![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Research-Papers/FastText/images/Loss.PNG)
+![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/Research-Papers/FastText/images/Loss.PNG)
