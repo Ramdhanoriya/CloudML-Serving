@@ -7,7 +7,11 @@
 - Using new Dataset API for Input pipeline
 - FastTextEstimator which contains implementation of fasttext research paper.
 - Creating Serialized model (.pbtxt) for tensorflow serving which can be deployed in cloud ml
-- Local prediction using serialized file
+
+# Note
+
+- Currently the model support only unigram features, You can change it if you need it.
+- Model does not support Hierarchical softmax(WIP)
 
 # Instructions
 

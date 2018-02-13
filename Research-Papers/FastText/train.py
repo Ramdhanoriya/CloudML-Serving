@@ -1,5 +1,4 @@
 import tensorflow as tf
-from tensorflow.contrib import training
 
 from model import model_config, fast_text_model
 from utils import commons, input_utils
@@ -12,10 +11,6 @@ N_WORDS = 0
 
 with open('dataset/nwords.csv', 'r') as f:
     N_WORDS = int(f.read()) + 2
-
-hparams = training.HParams(
-    N_WORDS=N_WORDS
-)
 
 fast_text_config = model_config.FastTextConfig(vocab_file='dataset/vocab.csv', vocab_len=N_WORDS,
                                                model_dir='build/', max_len=commons.MAX_DOCUMENT_LENGTH,
