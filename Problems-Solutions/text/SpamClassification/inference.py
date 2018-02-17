@@ -6,7 +6,7 @@ from tensorflow.contrib import predictor
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
-base_dir = 'serving/1518020970'
+base_dir = 'serving/1518856330'
 
 prediction_fn = predictor.from_saved_model(export_dir=base_dir, signature_def_key='predictions')
 

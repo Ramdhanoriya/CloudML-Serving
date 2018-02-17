@@ -22,6 +22,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
               type: DT_UINT8
@@ -104,6 +105,9 @@ meta_graphs {
               type: DT_QUINT8
               type: DT_QINT32
               type: DT_HALF
+              type: DT_UINT32
+              type: DT_UINT64
+              type: DT_BFLOAT16
             }
           }
         }
@@ -228,6 +232,9 @@ meta_graphs {
               type: DT_QUINT8
               type: DT_QINT32
               type: DT_HALF
+              type: DT_UINT32
+              type: DT_UINT64
+              type: DT_BFLOAT16
             }
           }
         }
@@ -355,6 +362,35 @@ meta_graphs {
         }
       }
       op {
+        name: "GatherNd"
+        input_arg {
+          name: "params"
+          type_attr: "Tparams"
+        }
+        input_arg {
+          name: "indices"
+          type_attr: "Tindices"
+        }
+        output_arg {
+          name: "output"
+          type_attr: "Tparams"
+        }
+        attr {
+          name: "Tparams"
+          type: "type"
+        }
+        attr {
+          name: "Tindices"
+          type: "type"
+          allowed_values {
+            list {
+              type: DT_INT32
+              type: DT_INT64
+            }
+          }
+        }
+      }
+      op {
         name: "GreaterEqual"
         input_arg {
           name: "x"
@@ -382,6 +418,9 @@ meta_graphs {
               type: DT_INT8
               type: DT_UINT16
               type: DT_HALF
+              type: DT_UINT32
+              type: DT_UINT64
+              type: DT_BFLOAT16
             }
           }
         }
@@ -506,6 +545,9 @@ meta_graphs {
               type: DT_INT8
               type: DT_UINT16
               type: DT_HALF
+              type: DT_UINT32
+              type: DT_UINT64
+              type: DT_BFLOAT16
             }
           }
         }
@@ -584,6 +626,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
               type: DT_INT32
@@ -658,6 +701,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
               type: DT_UINT8
@@ -696,6 +740,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
               type: DT_UINT8
@@ -836,6 +881,9 @@ meta_graphs {
               type: DT_QUINT8
               type: DT_QINT32
               type: DT_HALF
+              type: DT_UINT32
+              type: DT_UINT64
+              type: DT_BFLOAT16
             }
           }
         }
@@ -883,6 +931,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
             }
@@ -1103,6 +1152,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
             }
@@ -1421,6 +1471,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
               type: DT_UINT8
@@ -1431,63 +1482,6 @@ meta_graphs {
               type: DT_INT64
               type: DT_COMPLEX64
               type: DT_COMPLEX128
-            }
-          }
-        }
-      }
-      op {
-        name: "Sum"
-        input_arg {
-          name: "input"
-          type_attr: "T"
-        }
-        input_arg {
-          name: "reduction_indices"
-          type_attr: "Tidx"
-        }
-        output_arg {
-          name: "output"
-          type_attr: "T"
-        }
-        attr {
-          name: "keep_dims"
-          type: "bool"
-          default_value {
-            b: false
-          }
-        }
-        attr {
-          name: "T"
-          type: "type"
-          allowed_values {
-            list {
-              type: DT_FLOAT
-              type: DT_DOUBLE
-              type: DT_INT64
-              type: DT_INT32
-              type: DT_UINT8
-              type: DT_UINT16
-              type: DT_INT16
-              type: DT_INT8
-              type: DT_COMPLEX64
-              type: DT_COMPLEX128
-              type: DT_QINT8
-              type: DT_QUINT8
-              type: DT_QINT32
-              type: DT_HALF
-            }
-          }
-        }
-        attr {
-          name: "Tidx"
-          type: "type"
-          default_value {
-            type: DT_INT32
-          }
-          allowed_values {
-            list {
-              type: DT_INT32
-              type: DT_INT64
             }
           }
         }
@@ -1577,6 +1571,7 @@ meta_graphs {
           allowed_values {
             list {
               type: DT_HALF
+              type: DT_BFLOAT16
               type: DT_FLOAT
               type: DT_DOUBLE
             }
@@ -1627,34 +1622,6 @@ meta_graphs {
         }
       }
       op {
-        name: "Unpack"
-        input_arg {
-          name: "value"
-          type_attr: "T"
-        }
-        output_arg {
-          name: "output"
-          type_attr: "T"
-          number_attr: "num"
-        }
-        attr {
-          name: "num"
-          type: "int"
-          has_minimum: true
-        }
-        attr {
-          name: "T"
-          type: "type"
-        }
-        attr {
-          name: "axis"
-          type: "int"
-          default_value {
-            i: 0
-          }
-        }
-      }
-      op {
         name: "VariableV2"
         output_arg {
           name: "ref"
@@ -1689,11 +1656,40 @@ meta_graphs {
         name: "Where"
         input_arg {
           name: "input"
-          type: DT_BOOL
+          type_attr: "T"
         }
         output_arg {
           name: "index"
           type: DT_INT64
+        }
+        attr {
+          name: "T"
+          type: "type"
+          default_value {
+            type: DT_BOOL
+          }
+          allowed_values {
+            list {
+              type: DT_FLOAT
+              type: DT_DOUBLE
+              type: DT_INT64
+              type: DT_INT32
+              type: DT_UINT8
+              type: DT_UINT16
+              type: DT_INT16
+              type: DT_INT8
+              type: DT_COMPLEX64
+              type: DT_COMPLEX128
+              type: DT_QINT8
+              type: DT_QUINT8
+              type: DT_QINT32
+              type: DT_HALF
+              type: DT_UINT32
+              type: DT_UINT64
+              type: DT_BFLOAT16
+              type: DT_BOOL
+            }
+          }
         }
       }
       op {
@@ -1713,7 +1709,7 @@ meta_graphs {
       }
     }
     tags: "serve"
-    tensorflow_version: "1.4.0"
+    tensorflow_version: "1.5.0"
     tensorflow_git_version: "b\'unknown\'"
   }
   graph_def {
@@ -2507,65 +2503,7 @@ meta_graphs {
       }
     }
     node {
-      name: "input_layer/sms_embedding/to_sparse_input/Shape"
-      op: "Shape"
-      input: "Slice"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "out_type"
-        value {
-          type: DT_INT32
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Cast"
-      op: "Cast"
-      input: "input_layer/sms_embedding/to_sparse_input/Shape"
-      attr {
-        key: "DstT"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "SrcT"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Cast_1/x"
+      name: "input_layer/sms_embedding/to_sparse_input/ignore_value/x"
       op: "Const"
       attr {
         key: "_output_shapes"
@@ -2595,9 +2533,9 @@ meta_graphs {
       }
     }
     node {
-      name: "input_layer/sms_embedding/to_sparse_input/Cast_1"
+      name: "input_layer/sms_embedding/to_sparse_input/ignore_value"
       op: "Cast"
-      input: "input_layer/sms_embedding/to_sparse_input/Cast_1/x"
+      input: "input_layer/sms_embedding/to_sparse_input/ignore_value/x"
       attr {
         key: "DstT"
         value {
@@ -2624,7 +2562,7 @@ meta_graphs {
       name: "input_layer/sms_embedding/to_sparse_input/NotEqual"
       op: "NotEqual"
       input: "Slice"
-      input: "input_layer/sms_embedding/to_sparse_input/Cast_1"
+      input: "input_layer/sms_embedding/to_sparse_input/ignore_value"
       attr {
         key: "T"
         value {
@@ -2648,10 +2586,16 @@ meta_graphs {
       }
     }
     node {
-      name: "input_layer/sms_embedding/to_sparse_input/Where"
+      name: "input_layer/sms_embedding/to_sparse_input/indices"
       op: "Where"
       input: "input_layer/sms_embedding/to_sparse_input/NotEqual"
       attr {
+        key: "T"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
         key: "_output_shapes"
         value {
           list {
@@ -2668,611 +2612,10 @@ meta_graphs {
       }
     }
     node {
-      name: "input_layer/sms_embedding/to_sparse_input/Reshape/shape"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            int_val: -1
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Reshape"
-      op: "Reshape"
+      name: "input_layer/sms_embedding/to_sparse_input/values"
+      op: "GatherNd"
       input: "Slice"
-      input: "input_layer/sms_embedding/to_sparse_input/Reshape/shape"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "Tshape"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice/stack"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice/stack_1"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\002\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice/stack_2"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\001\000\000\000\001\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice"
-      op: "StridedSlice"
-      input: "input_layer/sms_embedding/to_sparse_input/Where"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice/stack"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice/stack_1"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice/stack_2"
-      attr {
-        key: "Index"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "begin_mask"
-        value {
-          i: 1
-        }
-      }
-      attr {
-        key: "ellipsis_mask"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "end_mask"
-        value {
-          i: 1
-        }
-      }
-      attr {
-        key: "new_axis_mask"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "shrink_axis_mask"
-        value {
-          i: 2
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice_1/stack"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\000\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice_1/stack_1"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\000\000\000\000\001\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice_1/stack_2"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\001\000\000\000\001\000\000\000"
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/strided_slice_1"
-      op: "StridedSlice"
-      input: "input_layer/sms_embedding/to_sparse_input/Where"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice_1/stack"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice_1/stack_1"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice_1/stack_2"
-      attr {
-        key: "Index"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "begin_mask"
-        value {
-          i: 3
-        }
-      }
-      attr {
-        key: "ellipsis_mask"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "end_mask"
-        value {
-          i: 1
-        }
-      }
-      attr {
-        key: "new_axis_mask"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "shrink_axis_mask"
-        value {
-          i: 0
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/unstack"
-      op: "Unpack"
-      input: "input_layer/sms_embedding/to_sparse_input/Cast"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "axis"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "num"
-        value {
-          i: 2
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/stack"
-      op: "Pack"
-      input: "input_layer/sms_embedding/to_sparse_input/unstack:1"
-      attr {
-        key: "N"
-        value {
-          i: 1
-        }
-      }
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "axis"
-        value {
-          i: 0
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Mul"
-      op: "Mul"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice_1"
-      input: "input_layer/sms_embedding/to_sparse_input/stack"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Sum/reduction_indices"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 1
-              }
-            }
-            int_val: 1
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Sum"
-      op: "Sum"
-      input: "input_layer/sms_embedding/to_sparse_input/Mul"
-      input: "input_layer/sms_embedding/to_sparse_input/Sum/reduction_indices"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "Tidx"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "keep_dims"
-        value {
-          b: false
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Add"
-      op: "Add"
-      input: "input_layer/sms_embedding/to_sparse_input/strided_slice"
-      input: "input_layer/sms_embedding/to_sparse_input/Sum"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT64
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-            }
-          }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/to_sparse_input/Gather"
-      op: "Gather"
-      input: "input_layer/sms_embedding/to_sparse_input/Reshape"
-      input: "input_layer/sms_embedding/to_sparse_input/Add"
+      input: "input_layer/sms_embedding/to_sparse_input/indices"
       attr {
         key: "Tindices"
         value {
@@ -3297,10 +2640,33 @@ meta_graphs {
           }
         }
       }
+    }
+    node {
+      name: "input_layer/sms_embedding/to_sparse_input/dense_shape"
+      op: "Shape"
+      input: "Slice"
       attr {
-        key: "validate_indices"
+        key: "T"
         value {
-          b: true
+          type: DT_INT64
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "out_type"
+        value {
+          type: DT_INT64
         }
       }
     }
@@ -3419,7 +2785,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/assert_less_than_num_buckets/Less"
       op: "Less"
-      input: "input_layer/sms_embedding/to_sparse_input/Gather"
+      input: "input_layer/sms_embedding/to_sparse_input/values"
       input: "input_layer/sms_embedding/num_buckets"
       attr {
         key: "T"
@@ -3621,6 +2987,28 @@ meta_graphs {
       }
     }
     node {
+      name: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert"
+      op: "Assert"
+      input: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch"
+      input: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_1"
+      input: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_2"
+      attr {
+        key: "T"
+        value {
+          list {
+            type: DT_INT64
+            type: DT_INT64
+          }
+        }
+      }
+      attr {
+        key: "summarize"
+        value {
+          i: 3
+        }
+      }
+    }
+    node {
       name: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch"
       op: "Switch"
       input: "input_layer/sms_embedding/assert_less_than_num_buckets/All"
@@ -3654,7 +3042,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_1"
       op: "Switch"
-      input: "input_layer/sms_embedding/to_sparse_input/Gather"
+      input: "input_layer/sms_embedding/to_sparse_input/values"
       input: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/pred_id"
       attr {
         key: "T"
@@ -3666,7 +3054,7 @@ meta_graphs {
         key: "_class"
         value {
           list {
-            s: "loc:@input_layer/sms_embedding/to_sparse_input/Gather"
+            s: "loc:@input_layer/sms_embedding/to_sparse_input/values"
           }
         }
       }
@@ -3716,28 +3104,6 @@ meta_graphs {
             shape {
             }
           }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert"
-      op: "Assert"
-      input: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch"
-      input: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_1"
-      input: "input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_2"
-      attr {
-        key: "T"
-        value {
-          list {
-            type: DT_INT64
-            type: DT_INT64
-          }
-        }
-      }
-      attr {
-        key: "summarize"
-        value {
-          i: 3
         }
       }
     }
@@ -3802,7 +3168,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/assert_greater_or_equal_0/GreaterEqual"
       op: "GreaterEqual"
-      input: "input_layer/sms_embedding/to_sparse_input/Gather"
+      input: "input_layer/sms_embedding/to_sparse_input/values"
       input: "input_layer/sms_embedding/zero"
       attr {
         key: "T"
@@ -4004,6 +3370,26 @@ meta_graphs {
       }
     }
     node {
+      name: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert"
+      op: "Assert"
+      input: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch"
+      input: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch_1"
+      attr {
+        key: "T"
+        value {
+          list {
+            type: DT_INT64
+          }
+        }
+      }
+      attr {
+        key: "summarize"
+        value {
+          i: 3
+        }
+      }
+    }
+    node {
       name: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch"
       op: "Switch"
       input: "input_layer/sms_embedding/assert_greater_or_equal_0/All"
@@ -4037,7 +3423,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch_1"
       op: "Switch"
-      input: "input_layer/sms_embedding/to_sparse_input/Gather"
+      input: "input_layer/sms_embedding/to_sparse_input/values"
       input: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/pred_id"
       attr {
         key: "T"
@@ -4049,7 +3435,7 @@ meta_graphs {
         key: "_class"
         value {
           list {
-            s: "loc:@input_layer/sms_embedding/to_sparse_input/Gather"
+            s: "loc:@input_layer/sms_embedding/to_sparse_input/values"
           }
         }
       }
@@ -4068,26 +3454,6 @@ meta_graphs {
               }
             }
           }
-        }
-      }
-    }
-    node {
-      name: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert"
-      op: "Assert"
-      input: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch"
-      input: "input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch_1"
-      attr {
-        key: "T"
-        value {
-          list {
-            type: DT_INT64
-          }
-        }
-      }
-      attr {
-        key: "summarize"
-        value {
-          i: 3
         }
       }
     }
@@ -4152,7 +3518,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/Identity"
       op: "Identity"
-      input: "input_layer/sms_embedding/to_sparse_input/Gather"
+      input: "input_layer/sms_embedding/to_sparse_input/values"
       input: "^input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Merge"
       input: "^input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Merge"
       attr {
@@ -4630,7 +3996,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/sms_embedding_weights/Slice"
       op: "Slice"
-      input: "input_layer/sms_embedding/to_sparse_input/Cast"
+      input: "input_layer/sms_embedding/to_sparse_input/dense_shape"
       input: "input_layer/sms_embedding/sms_embedding_weights/Slice/begin"
       input: "input_layer/sms_embedding/sms_embedding_weights/Slice/size"
       attr {
@@ -4760,7 +4126,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/sms_embedding_weights/Gather"
       op: "Gather"
-      input: "input_layer/sms_embedding/to_sparse_input/Cast"
+      input: "input_layer/sms_embedding/to_sparse_input/dense_shape"
       input: "input_layer/sms_embedding/sms_embedding_weights/Gather/indices"
       attr {
         key: "Tindices"
@@ -4829,8 +4195,8 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/sms_embedding_weights/SparseReshape"
       op: "SparseReshape"
-      input: "input_layer/sms_embedding/to_sparse_input/Where"
-      input: "input_layer/sms_embedding/to_sparse_input/Cast"
+      input: "input_layer/sms_embedding/to_sparse_input/indices"
+      input: "input_layer/sms_embedding/to_sparse_input/dense_shape"
       input: "input_layer/sms_embedding/sms_embedding_weights/Cast/x"
       attr {
         key: "_output_shapes"
@@ -4934,6 +4300,12 @@ meta_graphs {
       name: "input_layer/sms_embedding/sms_embedding_weights/Where"
       op: "Where"
       input: "input_layer/sms_embedding/sms_embedding_weights/GreaterEqual"
+      attr {
+        key: "T"
+        value {
+          type: DT_BOOL
+        }
+      }
       attr {
         key: "_output_shapes"
         value {
@@ -5923,7 +5295,7 @@ meta_graphs {
     node {
       name: "input_layer/sms_embedding/sms_embedding_weights/Cast_1"
       op: "Cast"
-      input: "input_layer/sms_embedding/to_sparse_input/Cast"
+      input: "input_layer/sms_embedding/to_sparse_input/dense_shape"
       attr {
         key: "DstT"
         value {
@@ -7508,7 +6880,7 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
             }
-            string_val: "_temp_87a78bd1fa4a4bd58074b6b630816403/part"
+            string_val: "_temp_0a7b7e6917f6439ca1965e9dd50ace97/part"
           }
         }
       }
@@ -7573,6 +6945,7 @@ meta_graphs {
     node {
       name: "save/ShardedFilename/shard"
       op: "Const"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -7606,6 +6979,7 @@ meta_graphs {
       input: "save/StringJoin"
       input: "save/ShardedFilename/shard"
       input: "save/num_shards"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -7619,6 +6993,7 @@ meta_graphs {
     node {
       name: "save/SaveV2/tensor_names"
       op: "Const"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -7658,6 +7033,7 @@ meta_graphs {
     node {
       name: "save/SaveV2/shape_and_slices"
       op: "Const"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -7704,6 +7080,7 @@ meta_graphs {
       input: "dense/kernel"
       input: "global_step"
       input: "input_layer/sms_embedding/embedding_weights"
+      device: "/device:CPU:0"
       attr {
         key: "dtypes"
         value {
@@ -7721,6 +7098,7 @@ meta_graphs {
       op: "Identity"
       input: "save/ShardedFilename"
       input: "^save/SaveV2"
+      device: "/device:CPU:0"
       attr {
         key: "T"
         value {
@@ -7750,6 +7128,7 @@ meta_graphs {
       op: "Pack"
       input: "save/ShardedFilename"
       input: "^save/control_dependency"
+      device: "/device:CPU:0"
       attr {
         key: "N"
         value {
@@ -7786,6 +7165,7 @@ meta_graphs {
       op: "MergeV2Checkpoints"
       input: "save/MergeV2Checkpoints/checkpoint_prefixes"
       input: "save/Const"
+      device: "/device:CPU:0"
       attr {
         key: "delete_old_dirs"
         value {
@@ -7799,6 +7179,7 @@ meta_graphs {
       input: "save/Const"
       input: "^save/control_dependency"
       input: "^save/MergeV2Checkpoints"
+      device: "/device:CPU:0"
       attr {
         key: "T"
         value {
@@ -8405,10 +7786,15 @@ meta_graphs {
       input: "^string_to_index/hash_table/table_init"
     }
     node {
+      name: "init_1"
+      op: "NoOp"
+    }
+    node {
       name: "group_deps"
       op: "NoOp"
       input: "^init"
       input: "^init_all_tables"
+      input: "^init_1"
     }
     node {
       name: "save_1/Const"
@@ -8465,7 +7851,7 @@ meta_graphs {
             dtype: DT_STRING
             tensor_shape {
             }
-            string_val: "_temp_a02b3299055f4e6689e14e388ebb958f/part"
+            string_val: "_temp_fe492408ee394b7aac5d18cdc22e5172/part"
           }
         }
       }
@@ -8530,6 +7916,7 @@ meta_graphs {
     node {
       name: "save_1/ShardedFilename/shard"
       op: "Const"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -8563,6 +7950,7 @@ meta_graphs {
       input: "save_1/StringJoin"
       input: "save_1/ShardedFilename/shard"
       input: "save_1/num_shards"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -8576,6 +7964,7 @@ meta_graphs {
     node {
       name: "save_1/SaveV2/tensor_names"
       op: "Const"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -8615,6 +8004,7 @@ meta_graphs {
     node {
       name: "save_1/SaveV2/shape_and_slices"
       op: "Const"
+      device: "/device:CPU:0"
       attr {
         key: "_output_shapes"
         value {
@@ -8661,6 +8051,7 @@ meta_graphs {
       input: "dense/kernel"
       input: "global_step"
       input: "input_layer/sms_embedding/embedding_weights"
+      device: "/device:CPU:0"
       attr {
         key: "dtypes"
         value {
@@ -8678,6 +8069,7 @@ meta_graphs {
       op: "Identity"
       input: "save_1/ShardedFilename"
       input: "^save_1/SaveV2"
+      device: "/device:CPU:0"
       attr {
         key: "T"
         value {
@@ -8707,6 +8099,7 @@ meta_graphs {
       op: "Pack"
       input: "save_1/ShardedFilename"
       input: "^save_1/control_dependency"
+      device: "/device:CPU:0"
       attr {
         key: "N"
         value {
@@ -8743,6 +8136,7 @@ meta_graphs {
       op: "MergeV2Checkpoints"
       input: "save_1/MergeV2Checkpoints/checkpoint_prefixes"
       input: "save_1/Const"
+      device: "/device:CPU:0"
       attr {
         key: "delete_old_dirs"
         value {
@@ -8756,6 +8150,7 @@ meta_graphs {
       input: "save_1/Const"
       input: "^save_1/control_dependency"
       input: "^save_1/MergeV2Checkpoints"
+      device: "/device:CPU:0"
       attr {
         key: "T"
         value {
@@ -9378,9 +8773,9 @@ meta_graphs {
     value {
       bytes_list {
         value: "\nSinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/cond_text\022Sinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/pred_id:0\032Tinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/switch_t:0 \001*\213\002\n^input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/control_dependency:0\nSinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/pred_id:0\nTinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/switch_t:0"
-        value: "\nUinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/cond_text_1\022Sinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/pred_id:0\032Tinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/switch_f:0*\366\010\n<input_layer/sms_embedding/assert_less_than_num_buckets/All:0\nYinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch:0\n[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_1:0\n[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_2:0\n`input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/control_dependency_1:0\nSinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/pred_id:0\nTinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/switch_f:0\n\'input_layer/sms_embedding/num_buckets:0\n2input_layer/sms_embedding/to_sparse_input/Gather:0\022\231\001\n<input_layer/sms_embedding/assert_less_than_num_buckets/All:0\022Yinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch:0\022\221\001\n2input_layer/sms_embedding/to_sparse_input/Gather:0\022[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_1:0\022\206\001\n\'input_layer/sms_embedding/num_buckets:0\022[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_2:0"
+        value: "\nUinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/cond_text_1\022Sinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/pred_id:0\032Tinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/switch_f:0*\366\010\n<input_layer/sms_embedding/assert_less_than_num_buckets/All:0\nYinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch:0\n[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_1:0\n[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_2:0\n`input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/control_dependency_1:0\nSinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/pred_id:0\nTinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/switch_f:0\n\'input_layer/sms_embedding/num_buckets:0\n2input_layer/sms_embedding/to_sparse_input/values:0\022\231\001\n<input_layer/sms_embedding/assert_less_than_num_buckets/All:0\022Yinput_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch:0\022\221\001\n2input_layer/sms_embedding/to_sparse_input/values:0\022[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_1:0\022\206\001\n\'input_layer/sms_embedding/num_buckets:0\022[input_layer/sms_embedding/assert_less_than_num_buckets/Assert/AssertGuard/Assert/Switch_2:0"
         value: "\nPinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/cond_text\022Pinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/pred_id:0\032Qinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/switch_t:0 \001*\202\002\n[input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/control_dependency:0\nPinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/pred_id:0\nQinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/switch_t:0"
-        value: "\nRinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/cond_text_1\022Pinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/pred_id:0\032Qinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/switch_f:0*\314\006\n9input_layer/sms_embedding/assert_greater_or_equal_0/All:0\nVinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch:0\nXinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch_1:0\n]input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/control_dependency_1:0\nPinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/pred_id:0\nQinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/switch_f:0\n2input_layer/sms_embedding/to_sparse_input/Gather:0\022\223\001\n9input_layer/sms_embedding/assert_greater_or_equal_0/All:0\022Vinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch:0\022\216\001\n2input_layer/sms_embedding/to_sparse_input/Gather:0\022Xinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch_1:0"
+        value: "\nRinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/cond_text_1\022Pinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/pred_id:0\032Qinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/switch_f:0*\314\006\n9input_layer/sms_embedding/assert_greater_or_equal_0/All:0\nVinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch:0\nXinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch_1:0\n]input_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/control_dependency_1:0\nPinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/pred_id:0\nQinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/switch_f:0\n2input_layer/sms_embedding/to_sparse_input/values:0\022\223\001\n9input_layer/sms_embedding/assert_greater_or_equal_0/All:0\022Vinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch:0\022\216\001\n2input_layer/sms_embedding/to_sparse_input/values:0\022Xinput_layer/sms_embedding/assert_greater_or_equal_0/Assert/AssertGuard/Assert/Switch_1:0"
       }
     }
   }
