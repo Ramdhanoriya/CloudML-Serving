@@ -51,12 +51,12 @@ def cnn_model_fn(features, labels, mode, params):
     logits = tf.keras.layers.Dense(commons.TARGET_SIZE, activation=None)(f1)
 
     predictions = tf.nn.sigmoid(logits)
-    prediction_indices = tf.argmax(predictions, axis=1)
+    #prediction_indices = tf.argmax(predictions, axis=1)
 
     if mode == tf.estimator.ModeKeys.PREDICT:
         prediction_dict = {
-            'class': prediction_indices,
-            'probabilities': predictions
+            'class': predictions,
+            #'probabilities': predictions
         }
 
         export_outputs = {
@@ -69,7 +69,7 @@ def cnn_model_fn(features, labels, mode, params):
 
     tf.summary.scalar('loss', loss)
 
-    acc = tf.equal(tf.cast(prediction_indices, dtype=tf.int32), labels)
+    acc = tf.equal(tf.cast(predictions, dtype=tf.int32), labels)
     acc = tf.reduce_mean(tf.cast(acc, tf.float32))
 
     tf.summary.scalar('acc', acc)
@@ -83,7 +83,7 @@ def cnn_model_fn(features, labels, mode, params):
 
     if mode == tf.estimator.ModeKeys.EVAL:
         eval_metrics_ops = {
-            'accuracy': tf.metrics.accuracy(labels=labels, predictions=prediction_indices)
+            'accuracy': tf.metrics.accuracy(labels=labels, predictions=predictions)
             # 'precision': tf.metrics.precision(labels=labels, predictions=predictions),
             # 'recall': tf.metrics.recall(labels=labels, predictions=predictions)
         }

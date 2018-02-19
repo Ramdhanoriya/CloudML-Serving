@@ -19,7 +19,7 @@ hparams = training.HParams(
 
 estimator = tf.estimator.Estimator(model_fn=cnn_model_fn, params=hparams, model_dir='build/')
 
-estimator.train(input_fn=lambda: input_fn('data/train_preprocess.csv', shuffle=True, repeat_count=2, batch_size=128))
+estimator.train(input_fn=lambda: input_fn('data/train_preprocess.csv', shuffle=True, repeat_count=5, batch_size=128))
 
 evaluated_results = estimator.evaluate(
     input_fn=lambda: input_fn('data/valid_preprocess.csv', shuffle=False, repeat_count=1, batch_size=128))
