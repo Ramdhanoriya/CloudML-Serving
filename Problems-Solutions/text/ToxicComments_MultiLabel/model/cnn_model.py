@@ -1,6 +1,8 @@
 import tensorflow as tf
 from tensorflow.contrib import lookup
+
 from model import commons
+
 
 def cnn_model_fn(features, labels, mode, params):
     '''
@@ -29,8 +31,9 @@ def cnn_model_fn(features, labels, mode, params):
     else:
         tf.keras.backend.set_learning_phase(False)
 
-    embedded_sequences = tf.keras.layers.Embedding(params.N_WORDS, 128, input_length=commons.CNN_MAX_DOCUMENT_LENGTH)(
+    embedded_sequences = tf.keras.layers.Embedding(params.N_WORDS, 50, input_length=commons.CNN_MAX_DOCUMENT_LENGTH)(
         word_id_vector)
+    '''
     conv_layer = []
     for filter_size in commons.CNN_FILTER_SIZES:
         l_conv = tf.keras.layers.Conv1D(filters=128, kernel_size=filter_size, activation='relu')(embedded_sequences)
@@ -43,6 +46,8 @@ def cnn_model_fn(features, labels, mode, params):
     f1 = tf.keras.layers.Dropout(0.5)(pool)
     f1 = tf.keras.layers.Flatten()(f1)
     f1 = tf.keras.layers.Dense(128, activation='relu')(f1)
+    '''
+    f1 = tf.keras.layers.GlobalMaxPooling1D()(embedded_sequences)
     logits = tf.keras.layers.Dense(commons.TARGET_SIZE, activation=None)(f1)
 
     predictions = tf.nn.sigmoid(logits)
@@ -64,7 +69,7 @@ def cnn_model_fn(features, labels, mode, params):
 
     tf.summary.scalar('loss', loss)
 
-    acc = tf.equal(prediction_indices, labels)
+    acc = tf.equal(tf.cast(prediction_indices, dtype=tf.int32), labels)
     acc = tf.reduce_mean(tf.cast(acc, tf.float32))
 
     tf.summary.scalar('acc', acc)
@@ -78,8 +83,8 @@ def cnn_model_fn(features, labels, mode, params):
 
     if mode == tf.estimator.ModeKeys.EVAL:
         eval_metrics_ops = {
-            'accuracy': tf.metrics.accuracy(labels=labels, predictions=prediction_indices),
-            'precision': tf.metrics.precision(labels=labels, predictions=prediction_indices),
-            'recall': tf.metrics.recall(labels=labels, predictions=prediction_indices)
+            'accuracy': tf.metrics.accuracy(labels=labels, predictions=prediction_indices)
+            # 'precision': tf.metrics.precision(labels=labels, predictions=predictions),
+            # 'recall': tf.metrics.recall(labels=labels, predictions=predictions)
         }
         return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metrics_ops)

@@ -51,6 +51,8 @@ model = Model(inputs=comment_input, outputs=output)
 
 model.compile(loss='binary_crossentropy', optimizer=Adam(0.01), metrics=['accuracy'])
 
-hist = model.fit(x_train, y_train, batch_size=batch_size, epochs=10, validation_split=0.25)
+hist = model.fit(x_train, y_train, batch_size=batch_size, epochs=1, validation_split=0.25)
 
 print(hist)
+
+print(model.predict(x=x_test, batch_size=1, verbose=1))
