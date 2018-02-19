@@ -15,9 +15,9 @@ y_train = train_df[["toxic", "severe_toxic", "obscene", "threat", "insult", "ide
 X_test = test_df["comment_text"].values
 
 max_features = 20000  # number of words we want to keep
-maxlen = 200  # max length of the comments in the model
-batch_size = 64  # batch size for the model
-embedding_dims = 120  # dimension of the hidden variable, i.e. the embedding dimension
+maxlen = 100  # max length of the comments in the model
+batch_size = 128  # batch size for the model
+embedding_dims = 100  # dimension of the hidden variable, i.e. the embedding dimension
 
 tok = Tokenizer(num_words=max_features)
 tok.fit_on_texts(list(X_train) + list(X_test))
@@ -32,6 +32,7 @@ x_train = sequence.pad_sequences(x_train, maxlen=maxlen)
 x_test = sequence.pad_sequences(x_test, maxlen=maxlen)
 print('x_train shape:', x_train.shape)
 print('x_test shape:', x_test.shape)
+print(y_train[0])
 
 comment_input = Input((maxlen,))
 
