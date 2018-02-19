@@ -15,9 +15,9 @@ y_train = train_df[["toxic", "severe_toxic", "obscene", "threat", "insult", "ide
 X_test = test_df["comment_text"].values
 
 max_features = 20000  # number of words we want to keep
-maxlen = 100  # max length of the comments in the model
+maxlen = 200  # max length of the comments in the model
 batch_size = 64  # batch size for the model
-embedding_dims = 20  # dimension of the hidden variable, i.e. the embedding dimension
+embedding_dims = 120  # dimension of the hidden variable, i.e. the embedding dimension
 
 tok = Tokenizer(num_words=max_features)
 tok.fit_on_texts(list(X_train) + list(X_test))
@@ -37,8 +37,7 @@ comment_input = Input((maxlen,))
 
 # we start off with an efficient embedding layer which maps
 # our vocab indices into embedding_dims dimensions
-comment_emb = Embedding(max_features, embedding_dims, input_length=maxlen,
-                        embeddings_initializer="uniform")(comment_input)
+comment_emb = Embedding(max_features, embedding_dims, input_length=maxlen, embeddings_initializer="uniform")(comment_input)
 
 # we add a GlobalMaxPooling1D, which will extract features from the embeddings
 # of all words in the comment
@@ -52,3 +51,5 @@ model = Model(inputs=comment_input, outputs=output)
 model.compile(loss='binary_crossentropy', optimizer=Adam(0.01), metrics=['accuracy'])
 
 hist = model.fit(x_train, y_train, batch_size=batch_size, epochs=10, validation_split=0.25)
+
+print(hist)
