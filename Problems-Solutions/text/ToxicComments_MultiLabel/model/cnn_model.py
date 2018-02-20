@@ -55,8 +55,10 @@ def cnn_model_fn(features, labels, mode, params):
 
     if mode == tf.estimator.ModeKeys.PREDICT:
         prediction_dict = {
-            'class': predictions,
-            #'probabilities': predictions
+            'class': tf.cast(tf.map_fn(lambda x: tf.cond(x > 0.5, lambda: 1.0, lambda: 0.0),
+                                       tf.squeeze(predictions)), dtype=tf.int32),
+
+
         }
 
         export_outputs = {
