@@ -4,7 +4,7 @@ from itertools import chain
 import tensorflow as tf
 from tensorflow.contrib import lookup
 
-from model import commons
+from model import commons, l4
 
 __author__ = 'KKishore'
 

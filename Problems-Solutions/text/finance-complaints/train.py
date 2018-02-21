@@ -18,7 +18,7 @@ hparams = training.HParams(
 
 estimator = tf.estimator.Estimator(model_fn=model_fn, params=hparams, model_dir='build/')
 
-estimator.train(input_fn=lambda: input_fn('dataset/trainpreprocess.csv', shuffle=True, repeat_count=10, batch_size=128))
+estimator.train(input_fn=lambda: input_fn('dataset/trainpreprocess.csv', shuffle=True, repeat_count=5, batch_size=128))
 
 evaluated_results = estimator.evaluate(
     input_fn=lambda: input_fn('dataset/testpreprocess.csv', shuffle=False, repeat_count=1, batch_size=128))
