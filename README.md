@@ -1,4 +1,4 @@
-# Tensorflow Solutions
+# CloudML Solutions
 
 - How to build a serving model in Tensorflow ?
 - How to use estimator effectively ?
