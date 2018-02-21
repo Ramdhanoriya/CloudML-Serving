@@ -3,23 +3,50 @@ from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 import pickle
 from keras.preprocessing import sequence
+import pandas as pd
+import numpy as np
+from sklearn.metrics import f1_score, accuracy_score
+
+text_col = 'comment_text'
+target_col = ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]
 
 with open('tokenizer.pkl', 'rb') as tokenizer_serializer:
     tokenizer:Tokenizer = pickle.load(tokenizer_serializer)
 
-model: Model = load_model('fasttext.h5')
-
-test_instance = 'Yo bitch Ja Rule is more succesful then you\'ll ever be whats up with you and hating you sad mofuckas...i should bitch slap ur pethedic white faces and get you to kiss my ass you guys sicken me. Ja rule is about pride in da music man. dont diss that shit on him. and nothin is wrong bein like tupac he was a brother too...fuckin white boys get things right next time'
-
-x_test = tokenizer.texts_to_sequences(test_instance)
-x_test = sequence.pad_sequences(x_test, maxlen=100)
-
-print('x_test shape:', x_test.shape)
-
-print(tokenizer.word_index)
-
+model: Model = load_model('cnn.h5')
 print(model.summary())
 
-print('\n')
 
-print(model.predict(x=[x_test], verbose=1, steps=1))
+test_df = pd.read_csv("data/test_m.csv").fillna("sterby")
+actual_values = y_train = test_df[["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]].values
+predicted_values = []
+x_test = test_df[text_col].values
+x_test = tokenizer.texts_to_sequences(x_test)
+x_test = sequence.pad_sequences(x_test, maxlen=400)
+predicted_instance = model.predict(x=x_test, verbose=1, steps=1)
+
+print(predicted_instance)
+
+'''
+for index, row in test_df.iterrows():
+    test_instance = row[text_col]
+    x_test = tokenizer.texts_to_sequences(test_instance)
+    x_test = sequence.pad_sequences(x_test, maxlen=400)
+    predicted_instance = model.predict(x=x_test, verbose=1, steps=1)
+    probs = predicted_instance[0]
+    predicted_label = []
+    for item in probs:
+        if item > 0.30:
+            predicted_label.append(1)
+        else:
+            predicted_label.append(0)
+    predicted_values.append(predicted_label)
+
+predicted_values = np.array(predicted_values, dtype=np.int32)
+actual_values = np.array(actual_values, dtype=np.int32)
+
+print(predicted_values)
+print(actual_values)
+
+print(accuracy_score(actual_values, predicted_values))
+'''

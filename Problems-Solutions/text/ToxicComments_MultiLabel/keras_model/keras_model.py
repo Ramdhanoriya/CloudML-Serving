@@ -3,75 +3,73 @@ import numpy as np
 
 from keras.preprocessing import sequence
 from keras.models import Model, Input
-from keras.layers import Dense, Embedding, GlobalMaxPooling1D
+from keras import layers
 from keras.preprocessing.text import Tokenizer
 from keras.optimizers import Adam
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import f1_score
+
 
 import pickle
 
-train_df = pd.read_csv("data/train.csv").fillna("sterby")
-#test_df = pd.read_csv("data/test.csv").fillna("sterby")
+train_df = pd.read_csv("data/train_m.csv").fillna("sterby")
 
 X_train = train_df["comment_text"].values
 y_train = train_df[["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]].values
 
-train_x, test_x, train_y, test_y = train_test_split(X_train, y_train, test_size=0.20)
+max_features = 5000  # number of words we want to keep
+maxlen = 400  # max length of the comments in the model
+batch_size = 32  # batch size for the model
+embedding_dims = 50  # dimension of the hidden variable, i.e. the embedding dimension
 
-#X_test = test_df["comment_text"].values
-
-max_features = 30000  # number of words we want to keep
-maxlen = 100  # max length of the comments in the model
-batch_size = 64  # batch size for the model
-embedding_dims = 75  # dimension of the hidden variable, i.e. the embedding dimension
+filters = 250
+kernel_size = 3
+hidden_dims = 250
 
 tok = Tokenizer(num_words=max_features)
-tok.fit_on_texts(list(train_x))
-x_train = tok.texts_to_sequences(train_x)
+tok.fit_on_texts(list(X_train))
+x_train = tok.texts_to_sequences(X_train)
 print(len(x_train), 'train sequences')
 print('Average train sequence length: {}'.format(np.mean(list(map(len, x_train)), dtype=int)))
 
 x_train = sequence.pad_sequences(x_train, maxlen=maxlen)
 print('x_train shape:', x_train.shape)
-print(train_y[0])
+print(y_train[0])
 
-comment_input = Input((maxlen,))
+def fast_text():
+    comment_input = Input((maxlen,))
+    comment_emb = layers.Embedding(max_features, embedding_dims, input_length=maxlen, embeddings_initializer="uniform")(comment_input)
+    h = layers.GlobalMaxPooling1D()(comment_emb)
+    output = layers.Dense(6, activation='sigmoid')(h)
+    model = Model(inputs=comment_input, outputs=output)
+    model.compile(loss='binary_crossentropy', optimizer=Adam(0.01), metrics=['accuracy'])
+    return model
 
-# we start off with an efficient embedding layer which maps
-# our vocab indices into embedding_dims dimensions
-comment_emb = Embedding(max_features, embedding_dims, input_length=maxlen, embeddings_initializer="uniform")(comment_input)
 
-# we add a GlobalMaxPooling1D, which will extract features from the embeddings
-# of all words in the comment
-h = GlobalMaxPooling1D()(comment_emb)
+def cnn_model():
+    sequence_input = layers.Input(shape=(maxlen,), dtype='int32')
+    embedded_sequences = layers.Embedding(max_features, 500, input_length=maxlen)(sequence_input)
+    conv = layers.Conv1D(filters=filters, kernel_size=kernel_size, activation='relu')(embedded_sequences)
+    pool = layers.GlobalMaxPool1D()(conv)
+    f1 = layers.Dense(128)(pool)
+    f1 = layers.Dropout(0.5)(f1)
+    f1 = layers.Activation(activation='relu')(f1)
+    #f1 = layers.Flatten()(f1)
+    logits = layers.Dense(6, activation='sigmoid')(f1)
 
-# We project onto a six-unit output layer, and squash it with a sigmoid:
-output = Dense(6, activation='sigmoid')(h)
+    model = Model(inputs=sequence_input, outputs=logits)
 
-model = Model(inputs=comment_input, outputs=output)
+    print(model.summary())
 
-model.compile(loss='binary_crossentropy', optimizer=Adam(0.01), metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.0002), metrics=['acc'])
+    return model
 
-hist = model.fit(x_train, train_y, batch_size=batch_size, epochs=1, validation_split=0.10)
+
+model = cnn_model()
+model.fit(x_train, y_train, batch_size=batch_size, epochs=10, validation_split=0.10)
 
 with open('tokenizer.pkl', 'wb') as token_serialize:
     pickle.dump(obj=tok, file=token_serialize, protocol=pickle.HIGHEST_PROTOCOL)
 
-model.save('fasttext.h5')
+model.save('cnn.h5')
 
 print('Model Building is Done !!')
-
-threshold = [0.2, 0.25, 0.3, 0.35, 0.4]
-
-print('Trying Various Epoch !!')
-
-for point in threshold:
-    print('For Point = ', point)
-    x_test = tok.texts_to_sequences(test_x)
-    x_test = sequence.pad_sequences(x_test, maxlen=maxlen)
-    print(model.predict(x=x_test, batch_size=1)[0])
-    #f1_score()
-
-
 
