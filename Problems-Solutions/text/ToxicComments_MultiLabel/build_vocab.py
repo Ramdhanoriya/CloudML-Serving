@@ -1,19 +1,19 @@
 __author__ = 'KKishore'
 
 import pandas as pd
-import re
 
 from model.commons import FEATURE_COL, PAD_WORD
 
+
 def build_vocab(file_name):
-    data_set = pd.read_csv(file_name, sep='\t')    
+    data_set = pd.read_csv(file_name, sep='\t')
     sentences = data_set[FEATURE_COL].values
     vocab_set = set()
     for sentence in sentences:
-        text = str(sentence)        
-        words = text.split(' ')            
+        text = str(sentence)
+        words = text.split(' ')
         word_set = set(words)
-        vocab_set.update(word_set)        
+        vocab_set.update(word_set)
     return list(vocab_set)
 
 
