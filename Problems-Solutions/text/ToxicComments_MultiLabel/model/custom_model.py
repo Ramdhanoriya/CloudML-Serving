@@ -27,7 +27,6 @@ def custom_fast_text(features, labels, mode, params):
     logits = tf.keras.layers.Dense(commons.TARGET_SIZE, activation=None)(f1)
 
     predictions = tf.nn.sigmoid(logits)
-    #prediction_indices = tf.argmax(predictions, axis=1)
 
     if mode == tf.estimator.ModeKeys.PREDICT:
         prediction_dict = {
@@ -61,8 +60,6 @@ def custom_fast_text(features, labels, mode, params):
 
     if mode == tf.estimator.ModeKeys.EVAL:
         eval_metrics_ops = {
-            'accuracy': tf.metrics.accuracy(labels=labels, predictions=predictions),
-            'precision': tf.metrics.precision(labels=labels, predictions=predictions),
-            'recall': tf.metrics.recall(labels=labels, predictions=predictions)
+            'accuracy': tf.metrics.accuracy(labels=labels, predictions=predictions)
         }
         return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metrics_ops)

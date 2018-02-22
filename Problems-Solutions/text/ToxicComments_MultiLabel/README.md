@@ -1,4 +1,6 @@
-# SMS Spam-Ham classification
+# Kaggle Toxic Comment Classification Challenge
+
+More on [here](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge)
 
 - Tensorflow 1.5
 - Using new Dataset API for Input pipeline
@@ -7,16 +9,17 @@
 
 # Instructions
 
+- Download the dataset from [here](https://drive.google.com/open?id=1cPPoxId_UaIvEl19YJmNcjdErNm4Y7Ek)
+- Extract the zip file to dataset folder.
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 - inference.py - model inference
-- embedding_model.py - Based on Representation learning for very short texts using weighted word embedding aggregation research paper
-- bag_of_words.py - Simple bag of words model using tensorflow
+- custom_model.py - Based on fasttext model.
 
 Accuracy = 0.95
 ===============
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/SpamClassification/images/Accuracy.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Solutions/blob/master/Problems-Solutions/text/ToxicComments_MultiLabel/images/Accuracy.PNG)
 
-Average Loss = 0.2246
+Average Loss = 0.045
 =====================
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/SpamClassification/images/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Solutions/blob/master/Problems-Solutions/text/ToxicComments_MultiLabel/images/Loss.PNG)
