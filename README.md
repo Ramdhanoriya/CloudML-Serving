@@ -19,6 +19,7 @@ This repository also contains implementation of research papers in tensorflow wh
 
 # Available Solutions
 
+- [Kaggle Toxic Comment Classification](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/Problems-Solutions/text/ToxicComments_MultiLabel)
 - [Kaggle consumer finance complaints - Based on Yoon Kim Research paper](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/text/finance-complaints)
 - [Sms SpamClassification - Setting custom weights for imbalanced class, BOW model](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/text/SpamClassification)
 - [Iris - Canned Estimator](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/structured-data/iris)
