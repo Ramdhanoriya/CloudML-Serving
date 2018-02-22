@@ -5,7 +5,7 @@ from model import commons
 
 
 def custom_fast_text(features, labels, mode, params):
-    vocab_table = lookup.index_table_from_file(vocabulary_file='vocab.csv', num_oov_buckets=1, default_value=-1)
+    vocab_table = lookup.index_table_from_file(vocabulary_file='data/vocab.csv', num_oov_buckets=1, default_value=-1)
     text = features[commons.FEATURE_COL]
     words = tf.string_split(text)
     dense_words = tf.sparse_tensor_to_dense(words, default_value=commons.PAD_WORD)
