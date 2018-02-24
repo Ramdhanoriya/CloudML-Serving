@@ -11,7 +11,7 @@ The idea is to solve many real-world data problems using Machine Learning with T
 
 This repository also contains implementation of research papers in tensorflow which can be deployed in cloud-ml
 
-# Feel free to support this repository by giving Star
+Feel free to support this repository by giving Star
 
 # Research Papers Implementation
 
