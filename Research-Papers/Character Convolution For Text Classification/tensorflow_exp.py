@@ -1,6 +1,8 @@
 import tensorflow as tf
 from tensorflow.contrib import lookup
 
+
+
 text = ['this is awesome']
 
 split_word = tf.string_split(text)
