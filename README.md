@@ -19,13 +19,13 @@ Contributions are welcome !!
 
 To deploy the model in cloud-ml use the following command
 
-# Tensorflow Model
+### Tensorflow Model
 gcloud ml-engine versions create {MODEL_VERSION} --model={MODEL_NAME} --origin={MODEL_PATH_IN_BUCKET}  --runtime-version=1.4
 
-# Scikit-Learn
+### Scikit-Learn
 gcloud ml-engine versions create {MODEL_VERSION} --model={MODEL_NAME} --origin={MODEL_PATH(PICKLED FILE)} --runtime-version="1.4" --framework="SCIKIT_LEARN"
 
-# Inference
+### Inference
 gcloud ml-engine predict --model={MODEL_NAME} --version={MODEL_VERSION} --json-instances={INPUT_JSON_FILE}
 
 
