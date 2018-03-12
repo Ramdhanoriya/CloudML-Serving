@@ -31,7 +31,7 @@ gcloud ml-engine predict --model={MODEL_NAME} --version={MODEL_VERSION} --json-i
 
 # Research Papers Implementation
 
-- [FastText](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Research-Papers/FastText)
+- [FastText](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/research/FastText)
 
 
 
