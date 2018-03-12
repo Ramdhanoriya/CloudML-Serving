@@ -37,15 +37,15 @@ gcloud ml-engine predict --model={MODEL_NAME} --version={MODEL_VERSION} --json-i
 
 # Available Solutions
 
-- [Kaggle Toxic Comment Multi Label Classification](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/Problems-Solutions/text/ToxicComments_MultiLabel)
-- [Kaggle consumer finance complaints - Based on Yoon Kim Research paper](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/text/finance-complaints)
-- [Sms SpamClassification - Setting custom weights for imbalanced class, BOW model](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/text/SpamClassification)
-- [Iris - Canned Estimator](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/structured-data/iris)
-- [Mnist - Custom Estimator using Keras and more](https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/Problems-Solutions/structured-data/mnist/mnist.py)
+- [Kaggle Toxic Comment Multi Label Classification](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/text/ToxicComments_MultiLabel)
+- [Kaggle consumer finance complaints - Based on Yoon Kim Research paper](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/text/finance-complaints)
+- [Sms SpamClassification - Setting custom weights for imbalanced class, BOW model](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/text/SpamClassification)
+- [Iris - Canned Estimator](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/structured-data/iris)
+- [Mnist - Custom Estimator using Keras and more](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/structured-data/mnist)
 
 
 <div align="center">
-  <img src="https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/extras/Tensorflow-Scikit.jpg"><br><br>
-  <img src="https://github.com/kishorenayar/Cloud-ML-Solutions/blob/master/extras/image00.png"><br><br>
-  <img src="https://github.com/kishorenayar/Cloud-ML-Solutions/blob/master/extras/keras-logo-2018-large-1200.png"><br><br>
+  <img src="https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/extras/pics/Tensorflow-Scikit.jpg"><br><br>
+  <img src="https://github.com/kishorenayar/Cloud-ML-Solutions/blob/master/extras/pics/image00.png"><br><br>
+  <img src="https://github.com/kishorenayar/Cloud-ML-Solutions/blob/master/extras/pics/keras-logo-2018-large-1200.png"><br><br>
 </div>
