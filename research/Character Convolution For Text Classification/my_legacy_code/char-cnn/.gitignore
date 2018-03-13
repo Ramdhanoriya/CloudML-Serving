@@ -1,6 +1,0 @@
-.cache/
-.ipynb_checkpoints/
-logs/
-char_cnn.egg-info/
-dist/
-build/
