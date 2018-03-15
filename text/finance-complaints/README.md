@@ -18,8 +18,8 @@ More on [here](https://www.kaggle.com/cfpb/us-consumer-finance-complaints)
 
 Accuracy = 0.92
 ===============
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/finance-complaints/images/Accuracy.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/finance-complaints/images/Accuracy.PNG)
 
 Average Loss = 0.5
 =====================
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/finance-complaints/images/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/finance-complaints/images/Loss.PNG)
