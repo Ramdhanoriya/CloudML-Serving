@@ -15,8 +15,8 @@
 
 Accuracy = 0.95
 ===============
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/SpamClassification/images/Accuracy.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/SpamClassification/images/Accuracy.PNG)
 
 Average Loss = 0.2246
 =====================
-![alt text](https://github.com/kishorenayar/Machine-Learning-Solutions/blob/master/Problems-Solutions/text/SpamClassification/images/Loss.PNG)
+![alt text](https://github.com/kishorenayar/CloudML-Serving/blob/master/Problems-Solutions/text/SpamClassification/images/Loss.PNG)
