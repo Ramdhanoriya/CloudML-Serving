@@ -35,3 +35,15 @@ X_train, y_train = train_data.getAllData()
 
 print(np.shape(X_train))
 print(X_train)
+
+f = train_data.strToIndexs('this is awesome')
+print(train_data.dict)
+
+f = f.astype(dtype=np.int32)
+print(f)
+
+np.savetxt('f.txt', f, delimiter=',')
+
+from keras.layers import Conv1D
+
+
