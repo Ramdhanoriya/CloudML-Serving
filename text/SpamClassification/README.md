@@ -19,4 +19,4 @@ Accuracy = 0.95
 
 Average Loss = 0.2246
 =====================
-![alt text](https://github.com/kishorenayar/CloudML-Serving/blob/master/Problems-Solutions/text/SpamClassification/images/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/SpamClassification/images/Loss.PNG)
