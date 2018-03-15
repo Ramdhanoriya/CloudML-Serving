@@ -9,6 +9,6 @@ This example will show to how to use keras with tensorflow for training, validat
 Accuracy = 0.9744
 Average Loss = 0.077476
 
-![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/structured-data/mnist/build/mnist.png)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/structured-data/mnist/build/mnist.png)
 
-![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/Problems-Solutions/structured-data/mnist/build/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/structured-data/mnist/build/Loss.PNG)
