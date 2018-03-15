@@ -18,8 +18,8 @@ More on [here](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-chal
 
 Accuracy = 0.95
 ===============
-![alt text](https://github.com/KishoreKarunakaran/CloudML-Solutions/blob/master/Problems-Solutions/text/ToxicComments_MultiLabel/images/Accuracy.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/ToxicComments_MultiLabel/images/Accuracy.PNG)
 
 Average Loss = 0.045
 =====================
-![alt text](https://github.com/KishoreKarunakaran/CloudML-Solutions/blob/master/Problems-Solutions/text/ToxicComments_MultiLabel/images/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/ToxicComments_MultiLabel/images/Loss.PNG)
