@@ -22,8 +22,8 @@
 
 Accuracy = 0.92
 ===============
-![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/Research-Papers/FastText/images/Accuracy.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/research/FastText/images/Accuracy.PNG)
 
 Average Loss = 0.22
 =====================
-![alt text](https://github.com/kishorenayar/Tensorflow-Solutions/blob/master/Research-Papers/FastText/images/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/research/FastText/images/Loss.PNG)
