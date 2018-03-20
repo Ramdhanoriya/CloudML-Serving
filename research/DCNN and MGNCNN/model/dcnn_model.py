@@ -1,10 +1,8 @@
 import multiprocessing
-from itertools import chain
 
 import tensorflow as tf
+from tensorflow.contrib import estimator
 from tensorflow.contrib import lookup
-from model.pooling import KMaxPooling
-from model.folding import Folding
 
 from model import commons
 
@@ -34,48 +32,7 @@ def input_fn(file_name, batch_size=32, shuffle=False, repeat_count=1):
     return features, target
 
 
-def streaming_f1(labels, predictions, n_classes, weights=None, type='macro'):
-    '''
-    Refer http://rushdishams.blogspot.in/2011/08/micro-and-macro-average-of-precision.html
-    for micro and macro f1
-    :param labels:
-    :param predictions:
-    :param n_classes:
-    :param type:
-    :return:
-    '''
-    labels_and_predictions_by_class = [(tf.equal(labels, c), tf.equal(predictions, c)) for c in range(0, n_classes)]
-    tp_by_class_val, tp_by_class_update_op = zip(
-        *[tf.metrics.true_positives(label, prediction, weights=weights) for label, prediction in
-          labels_and_predictions_by_class])
-    fn_by_class_val, fn_by_class_update_op = zip(
-        *[tf.metrics.false_negatives(label, prediction, weights=weights) for label, prediction
-          in labels_and_predictions_by_class])
-    fp_by_class_val, fp_by_class_update_op = zip(
-        *[tf.metrics.false_positives(label, prediction, weights=weights) for label, prediction
-          in labels_and_predictions_by_class])
-
-    f1_update_op = tf.group(*chain(tp_by_class_update_op, fn_by_class_update_op, fp_by_class_update_op))
-
-    if type == 'macro':
-        epsilon = [10e-6 for _ in range(n_classes)]
-
-        f1_val = tf.multiply(2., tp_by_class_val) / (tf.reduce_sum([tf.multiply(2., tp_by_class_val),
-                                                                    fp_by_class_val, fn_by_class_val, epsilon],
-                                                                   axis=0))
-        f1_val = tf.reduce_mean(f1_val)
-    else:
-        epsilon = 10e-6
-
-        total_tp = tf.reduce_sum(tp_by_class_val)
-        total_fn = tf.reduce_sum(fn_by_class_val)
-        total_fp = tf.reduce_sum(fp_by_class_val)
-
-        f1_val = tf.squeeze(tf.multiply(2., total_tp) / (tf.multiply(2., total_tp) +
-                                                         total_fp + total_fn + epsilon,
-                                                         ))
-
-    return f1_val, f1_update_op
+head = estimator.binary_classification_head()
 
 
 def model_fn(features, labels, mode, params):
@@ -95,11 +52,11 @@ def model_fn(features, labels, mode, params):
     word_ids_padded = tf.pad(word_ids, padding)
     word_id_vector = tf.slice(word_ids_padded, [0, 0], [-1, commons.MAX_DOCUMENT_LENGTH])
 
-    embed1 = tf.keras.layers.Embedding(5001, 50, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed2 = tf.keras.layers.Embedding(5001, 100, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed3 = tf.keras.layers.Embedding(5001, 150, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed4 = tf.keras.layers.Embedding(5001, 200, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed5 = tf.keras.layers.Embedding(5001, 250, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    embed1 = tf.keras.layers.Embedding(params.N_WORDS, 50, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    embed2 = tf.keras.layers.Embedding(params.N_WORDS, 100, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    embed3 = tf.keras.layers.Embedding(params.N_WORDS, 150, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    embed4 = tf.keras.layers.Embedding(params.N_WORDS, 200, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    embed5 = tf.keras.layers.Embedding(params.N_WORDS, 250, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
 
     filter_sizes = [3, 5]
 
@@ -107,7 +64,8 @@ def model_fn(features, labels, mode, params):
     for text_embedding in [embed1, embed2, embed3, embed4, embed5]:
         for filter_size in filter_sizes:
             l_zero = tf.keras.layers.ZeroPadding1D((filter_size - 1, filter_size - 1))(text_embedding)
-            l_conv = tf.keras.layers.Conv1D(filters=16, kernel_size=filter_size, padding='same', activation='tanh')(l_zero)
+            l_conv = tf.keras.layers.Conv1D(filters=16, kernel_size=filter_size, padding='same', activation='tanh')(
+                l_zero)
             l_pool = tf.keras.layers.GlobalMaxPool1D()(l_conv)
             conv_pools.append(l_pool)
 
@@ -115,46 +73,16 @@ def model_fn(features, labels, mode, params):
     drop = tf.keras.layers.Dropout(0.5)(l_merge)
     l_dense = tf.keras.layers.Dense(128, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.01))(drop)
     logits = tf.keras.layers.Dense(1, activation=None)(l_dense)
-
-    probabilities = tf.nn.sigmoid(logits)
-    predicted_indices = tf.cast(tf.argmax(probabilities, axis=1), dtype=tf.int32)
-
-    if mode == tf.estimator.ModeKeys.PREDICT:
-        predictions = {
-            'class': predicted_indices,
-            'probabilities': probabilities
-        }
-
-        exported_outputs = {
-            'prediction': tf.estimator.export.PredictOutput(predictions)
-        }
-        return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions, export_outputs=exported_outputs)
-
     if labels is not None:
         labels = tf.reshape(labels, [-1, 1])
 
-    loss = tf.losses.sigmoid_cross_entropy(logits=logits, multi_class_labels=labels)
-    tf.summary.scalar('loss', loss)
+    optimizer = tf.train.AdamOptimizer()
 
-    acc = tf.equal(predicted_indices, labels)
-    acc = tf.reduce_mean(tf.cast(acc, tf.float32))
+    def _train_op_fn(loss):
+        return optimizer.minimize(loss=loss, global_step=tf.train.get_global_step())
 
-    tf.summary.scalar('acc', acc)
-
-    if mode == tf.estimator.ModeKeys.TRAIN:
-        optimizer = tf.train.AdamOptimizer()
-        train_op = optimizer.minimize(loss=loss, global_step=tf.train.get_global_step())
-        return tf.estimator.EstimatorSpec(mode=mode, loss=loss, train_op=train_op)
-
-    if mode == tf.estimator.ModeKeys.EVAL:
-        eval_metrics_ops = {
-            'accuracy': tf.metrics.accuracy(labels=labels, predictions=predicted_indices),
-            'precision': tf.metrics.precision(labels=labels, predictions=predicted_indices),
-            'recall': tf.metrics.recall(labels=labels, predictions=predicted_indices),
-            'f1_score': streaming_f1(labels=labels, predictions=predicted_indices, n_classes=2)
-        }
-
-        return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metrics_ops)
+    return head.create_estimator_spec(features=features, labels=labels, mode=mode, logits=logits,
+                                      train_op_fn=_train_op_fn)
 
 
 def serving_fn():
