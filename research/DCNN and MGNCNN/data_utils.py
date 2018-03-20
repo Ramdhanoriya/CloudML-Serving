@@ -4,7 +4,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-data_set = pd.read_csv('D:\\DataSet\\Kaggle Sentiment Analysis\\testData.tsv', sep='\t')
+data_set = pd.read_csv('D:\\DataSet\\Kaggle Sentiment Analysis\\labeledTrainData.tsv', sep='\t')
 
 
 def clean(text):
@@ -66,4 +66,4 @@ def clean(text):
 data_set['review'] = data_set['review'].apply(lambda x: clean(x))
 data_set.drop('id', axis=1, inplace=True)
 
-data_set.to_csv('data/test.csv', index=False)
+data_set.to_csv('data/train.tsv', sep='\t', encoding='utf-8', index=False)
