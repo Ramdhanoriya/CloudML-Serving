@@ -3,10 +3,14 @@ import multiprocessing
 import tensorflow as tf
 from tensorflow.contrib import estimator
 from tensorflow.contrib import lookup
+from model.folding import Folding
+from model.pooling import KMaxPooling
 
 from model import commons
 
 __author__ = 'KKishore'
+
+head = estimator.binary_classification_head()
 
 
 def parse_csv_row(row):
@@ -32,9 +36,6 @@ def input_fn(file_name, batch_size=32, shuffle=False, repeat_count=1):
     return features, target
 
 
-head = estimator.binary_classification_head()
-
-
 def model_fn(features, labels, mode, params):
     if mode == tf.estimator.ModeKeys.TRAIN:
         tf.keras.backend.set_learning_phase(True)
@@ -52,27 +53,21 @@ def model_fn(features, labels, mode, params):
     word_ids_padded = tf.pad(word_ids, padding)
     word_id_vector = tf.slice(word_ids_padded, [0, 0], [-1, commons.MAX_DOCUMENT_LENGTH])
 
-    embed1 = tf.keras.layers.Embedding(params.N_WORDS, 50, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed2 = tf.keras.layers.Embedding(params.N_WORDS, 100, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed3 = tf.keras.layers.Embedding(params.N_WORDS, 150, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed4 = tf.keras.layers.Embedding(params.N_WORDS, 200, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed5 = tf.keras.layers.Embedding(params.N_WORDS, 250, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    f1 = tf.keras.layers.Embedding(params.N_WORDS, 50, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    f1 = tf.keras.layers.Dropout(0.2)(f1)
+    f1 = tf.keras.layers.ZeroPadding1D((49, 49))(f1)
+    f1 = tf.keras.layers.Conv1D(64, 50, padding='same', activation=None, strides=1)(f1)
+    f1 = KMaxPooling(k=9, axis=1)(f1)
 
-    filter_sizes = [3, 5]
+    f1 = tf.keras.layers.ZeroPadding1D((24, 24))(f1)
+    f1 = tf.keras.layers.Conv1D(64, 25, padding='same', activation=None, strides=1)(f1)
+    f1 = Folding()(f1)
+    f1 = KMaxPooling(k=9, axis=1)(f1)
+    f1 = f1 = tf.keras.layers.Activation('relu')(f1)
+    f1 = tf.keras.layers.Flatten()(f1)
+    f1 = tf.keras.layers.Dropout(0.2)(f1)
+    logits = tf.keras.layers.Dense(1, activation=None)(f1)
 
-    conv_pools = []
-    for text_embedding in [embed1, embed2, embed3, embed4, embed5]:
-        for filter_size in filter_sizes:
-            l_zero = tf.keras.layers.ZeroPadding1D((filter_size - 1, filter_size - 1))(text_embedding)
-            l_conv = tf.keras.layers.Conv1D(filters=16, kernel_size=filter_size, padding='same', activation='tanh')(
-                l_zero)
-            l_pool = tf.keras.layers.GlobalMaxPool1D()(l_conv)
-            conv_pools.append(l_pool)
-
-    l_merge = tf.keras.layers.Concatenate(axis=1)(conv_pools)
-    drop = tf.keras.layers.Dropout(0.5)(l_merge)
-    l_dense = tf.keras.layers.Dense(128, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.01))(drop)
-    logits = tf.keras.layers.Dense(1, activation=None)(l_dense)
     if labels is not None:
         labels = tf.reshape(labels, [-1, 1])
 

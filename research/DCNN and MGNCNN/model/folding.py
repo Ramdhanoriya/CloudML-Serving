@@ -8,7 +8,7 @@ class Folding(tf.keras.layers.Layer):
         self.input_spec = tf.keras.layers.InputSpec(ndim=3)
 
     def compute_output_shape(self, input_shape):
-        return (input_shape[0], input_shape[1], int(input_shape[2] / 2))
+        return input_shape[0], input_shape[1], int(input_shape[2] / 2)
 
     def call(self, x):
         input_shape = x.get_shape().as_list()
