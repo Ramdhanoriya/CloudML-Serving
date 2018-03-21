@@ -3,7 +3,8 @@ __author__ = 'KKishore'
 import tensorflow as tf
 from tensorflow.contrib import training
 
-from model.mgnccnn_model import model_fn, input_fn, serving_fn
+from model.cnn_model import model_fn, input_fn, serving_fn
+
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -20,7 +21,7 @@ print(N_WORDS)
 
 estimator = tf.estimator.Estimator(model_fn=model_fn, params=hparams, model_dir='build/')
 
-estimator.train(input_fn=lambda: input_fn('data/train.tsv', shuffle=True, repeat_count=10))
+estimator.train(input_fn=lambda: input_fn('data/train.tsv', shuffle=True, repeat_count=5))
 
 evaluated_results = estimator.evaluate(input_fn=lambda: input_fn('data/dev.tsv', shuffle=False, repeat_count=1))
 
