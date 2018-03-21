@@ -1,14 +1,14 @@
 import multiprocessing
 
 import tensorflow as tf
-from tensorflow.contrib import estimator
 from tensorflow.contrib import lookup
 
 from model import commons
 
 __author__ = 'KKishore'
 
-head = estimator.binary_classification_head()
+
+# head = estimator.binary_classification_head()
 
 
 def parse_csv_row(row):
@@ -51,16 +51,15 @@ def model_fn(features, labels, mode, params):
     word_ids_padded = tf.pad(word_ids, padding)
     word_id_vector = tf.slice(word_ids_padded, [0, 0], [-1, commons.MAX_DOCUMENT_LENGTH])
 
-    embed1 = tf.keras.layers.Embedding(params.N_WORDS, 50, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed2 = tf.keras.layers.Embedding(params.N_WORDS, 100, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed3 = tf.keras.layers.Embedding(params.N_WORDS, 150, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed4 = tf.keras.layers.Embedding(params.N_WORDS, 200, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
-    embed5 = tf.keras.layers.Embedding(params.N_WORDS, 250, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    '''
+
+    embed1 = tf.keras.layers.Embedding(params.N_WORDS, 150, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    embed2 = tf.keras.layers.Embedding(params.N_WORDS, 300, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
 
     filter_sizes = [3, 5]
 
     conv_pools = []
-    for text_embedding in [embed1, embed2, embed3, embed4, embed5]:
+    for text_embedding in [embed1, embed2]:
         for filter_size in filter_sizes:
             padding = tf.keras.layers.ZeroPadding1D((filter_size - 1, filter_size - 1))(text_embedding)
             conv1_d = tf.keras.layers.Conv1D(filters=16, kernel_size=filter_size, padding='same', activation='tanh')(
@@ -72,7 +71,52 @@ def model_fn(features, labels, mode, params):
     drop = tf.keras.layers.Dropout(0.5)(merged_layers)
     f1 = tf.keras.layers.Dense(128, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.01))(drop)
     logits = tf.keras.layers.Dense(1, activation=None)(f1)
+    '''
 
+    f1 = tf.keras.layers.Embedding(params.N_WORDS, 50, input_length=commons.MAX_DOCUMENT_LENGTH)(word_id_vector)
+    f1 = tf.keras.layers.Dropout(0.2)(f1)
+    f1 = tf.keras.layers.Conv1D(filters=250, kernel_size=3, padding='valid', activation='relu', strides=1)(f1)
+    f1 = tf.keras.layers.GlobalMaxPool1D()(f1)
+    f1 = tf.keras.layers.Dense(250)(f1)
+    f1 = tf.keras.layers.Dropout(0.2)(f1)
+    f1 = tf.keras.layers.Activation('relu')(f1)
+    logits = tf.keras.layers.Dense(1)(f1)
+
+    predictions = tf.nn.sigmoid(logits)
+    prediction_indices = tf.argmax(predictions, axis=1)
+
+    if mode == tf.estimator.ModeKeys.PREDICT:
+        prediction_dict = {
+            'class': prediction_indices,  # tf.gather(commons.TARGET_LABELS, prediction_indices),
+            'class_index': prediction_indices,
+            'probabilities': predictions
+        }
+
+        export_outputs = {
+            'predictions': tf.estimator.export.PredictOutput(prediction_dict)
+        }
+
+        return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions, export_outputs=export_outputs)
+
+    if labels is not None:
+        labels = tf.expand_dims(labels, dim=(1,))
+
+    loss = tf.losses.sigmoid_cross_entropy(multi_class_labels=labels, logits=logits)
+    tf.summary.scalar('loss', loss)
+
+    if mode == tf.estimator.ModeKeys.TRAIN:
+        optimizer = tf.train.AdamOptimizer()
+
+        train_op = optimizer.minimize(loss=loss, global_step=tf.train.get_global_step())
+
+        return tf.estimator.EstimatorSpec(mode=mode, train_op=train_op, loss=loss)
+
+    if mode == tf.estimator.ModeKeys.EVAL:
+        eval_metrics_ops = {
+            'accuracy': tf.metrics.accuracy(labels=labels, predictions=prediction_indices)
+        }
+        return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metrics_ops)
+    '''
     if labels is not None:
         labels = tf.reshape(labels, [-1, 1])
 
@@ -83,6 +127,7 @@ def model_fn(features, labels, mode, params):
 
     return head.create_estimator_spec(features=features, labels=labels, mode=mode, logits=logits,
                                       train_op_fn=_train_op_fn)
+    '''
 
 
 def serving_fn():

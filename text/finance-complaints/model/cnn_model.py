@@ -147,6 +147,8 @@ def model_fn(features, labels, mode, params):
         return tf.estimator.EstimatorSpec(mode=mode, predictions=predictions, export_outputs=export_outputs)
 
     weights = features[commons.WEIGHT_COLUNM_NAME]
+    tf.logging.info('Logits Layer = {}'.format(logits))
+    tf.logging.info('Logits Layer = {}'.format(labels))
     loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits, weights=weights)
 
     tf.summary.scalar('loss', loss)

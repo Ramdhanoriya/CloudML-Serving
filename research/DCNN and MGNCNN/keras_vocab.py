@@ -1,7 +1,7 @@
 from keras.preprocessing.text import Tokenizer
 import pandas as pd
 
-PAD_WORD = '#=KISHORE=#'
+PAD_WORD = 'UNK'
 
 data_set = pd.read_csv('data/train.tsv', sep='\t')
 data = data_set['review'].values
@@ -23,3 +23,6 @@ with open('data/vocab.csv', 'w', encoding='utf-8') as vocab_file:
     vocab_file.write("{}\n".format(PAD_WORD))
     for word in items:
         vocab_file.write("{}\n".format(word))
+
+with open('data/nwords.csv', mode='w') as n_words:
+    n_words.write(str(len(items)))
