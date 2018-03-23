@@ -39,6 +39,7 @@ gcloud ml-engine predict --model={MODEL_NAME} --version={MODEL_VERSION} --json-i
 
 - [Kaggle Toxic Comment Multi Label Classification](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/text/ToxicComments_MultiLabel)
 - [Kaggle consumer finance complaints - Based on Yoon Kim Research paper](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/text/finance-complaints)
+- [Kaggle Imdb Sentiment Analysis - Based on Convolution 1D for text classification](https://github.com/KishoreKarunakaran/CloudML-Serving/tree/master/text/imdb_cnn)
 - [Sms SpamClassification - Setting custom weights for imbalanced class, BOW model](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/text/SpamClassification)
 - [Iris - Canned Estimator](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/structured-data/iris)
 - [Mnist - Custom Estimator using Keras and more](https://github.com/KishoreKarunakaran/CloudML-Solutions/tree/master/structured-data/mnist)
