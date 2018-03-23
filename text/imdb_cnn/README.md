@@ -1,4 +1,4 @@
-# SMS Spam-Ham classification
+# Imdb Sentiment Analysis
 
 - Tensorflow 1.4
 - Using new Dataset API for Input pipeline
@@ -10,13 +10,15 @@
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 - inference.py - model inference
-- embedding_model.py - Based on Representation learning for very short texts using weighted word embedding aggregation research paper
-- bag_of_words.py - Simple bag of words model using tensorflow
+- cnn_model.py - Applying Convolution1D for imdb sentiment analysis
 
-Accuracy = 0.95
+# TODO
+- Improve the model
+
+Accuracy = 0.86 and F1-Score = 0.86
 ===============
-![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/SpamClassification/images/Accuracy.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/imdb_cnn/images/Accuracy.PNG)
 
-Average Loss = 0.2246
+Average Loss = 0.5681
 =====================
-![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/SpamClassification/images/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/text/imdb_cnn/images/Loss.PNG)
