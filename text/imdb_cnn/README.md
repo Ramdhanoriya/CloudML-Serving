@@ -7,6 +7,7 @@
 
 # Instructions
 
+- Download dataset from [here](https://drive.google.com/open?id=1by4tC8qrAte8o5pXR2vTG6YMe-33c7eS)
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 - inference.py - model inference
