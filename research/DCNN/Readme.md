@@ -13,15 +13,19 @@
 
 # Instructions
 
-- Download the dataset from [here](https://drive.google.com/open?id=1j9d1zyEaxVRwTm2zjOiQdJ5SxcusvZ_N)
+- Download the dataset from [here](https://drive.google.com/open?id=1by4tC8qrAte8o5pXR2vTG6YMe-33c7eS)
 - Extract the zip file to dataset folder.
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 
+Model
+=====
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/research/DCNN/images/DCNN.png)
+
 Accuracy = 0.84
 ===============
-![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/research/FastText/images/Accuracy.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/research/DCNN/images/Graph.png)
 
 Average Loss = 0.64
 =====================
-![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/research/FastText/images/Loss.PNG)
+![alt text](https://github.com/KishoreKarunakaran/CloudML-Serving/blob/master/research/DCNN/images/LOSS.PNG)
