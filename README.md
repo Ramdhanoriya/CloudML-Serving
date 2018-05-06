@@ -32,6 +32,7 @@ gcloud ml-engine predict --model={MODEL_NAME} --version={MODEL_VERSION} --json-i
 # Research Papers Implementation
 
 - [FastText](https://github.com/kishorenayar/Tensorflow-Solutions/tree/master/research/FastText)
+- [Dynamic CNN](https://github.com/KishoreKarunakaran/CloudML-Serving/tree/master/research/DCNN)
 
 
 
