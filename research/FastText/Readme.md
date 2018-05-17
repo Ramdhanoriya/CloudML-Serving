@@ -19,6 +19,7 @@
 - Extract the zip file to dataset folder.
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
+- Download the already trained model file from [here](https://drive.google.com/open?id=1h4AA30LmG4-mBHZRvUt0G52-Xlw96ktg)
 
 Accuracy = 0.92
 ===============
