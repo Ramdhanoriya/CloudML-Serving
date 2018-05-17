@@ -8,6 +8,7 @@
 # Instructions
 
 - Download dataset from [here](https://drive.google.com/open?id=1by4tC8qrAte8o5pXR2vTG6YMe-33c7eS)
+- Download the model from [here](https://drive.google.com/open?id=1-_9mEdTMxX5hS6Q_3TzSYrTpo5N5Nq7w)
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 - inference.py - model inference

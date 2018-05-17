@@ -11,6 +11,7 @@ More on [here](https://www.kaggle.com/cfpb/us-consumer-finance-complaints)
 
 - Download the dataset from [here](https://drive.google.com/open?id=1j9d1zyEaxVRwTm2zjOiQdJ5SxcusvZ_N)
 - Extract the zip file to dataset folder.
+- Download the serving [model](https://drive.google.com/open?id=1vcaWcXaPGbCR7G_QVupft5G93UcJDps2)
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 - inference.py - model inference
