@@ -11,6 +11,7 @@ More on [here](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-chal
 
 - Download the dataset from [here](https://drive.google.com/open?id=1cPPoxId_UaIvEl19YJmNcjdErNm4Y7Ek)
 - Extract the zip file to dataset folder.
+- Download the serving [file](https://drive.google.com/open?id=1elOS90DokI0Op3q6GP5M8rX_s8oENXgI)
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 - inference.py - model inference
