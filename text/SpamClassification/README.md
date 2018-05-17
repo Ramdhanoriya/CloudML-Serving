@@ -7,6 +7,7 @@
 
 # Instructions
 
+- Download the serving model [file](https://drive.google.com/open?id=103iTY7V8pQ91s3aCN-42VA9ftfcCD0T9)
 - use build_vocab.py to generate vocabulary file
 - train.py - Training the model
 - inference.py - model inference
